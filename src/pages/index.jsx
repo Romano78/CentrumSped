@@ -98,12 +98,12 @@ const ProjectListing = styled.ul`
 const IndexWrapper = Wrapper.withComponent("main");
 
 const Index = ({
-  data: { homepage, social, posts, projects },
+  data: { homepage, social, projects },
   pageContext: { locale },
   location,
 }) => {
   const lang = React.useContext(LocaleContext);
-  const i18n = lang.i18n[lang.locale];
+  // const i18n = lang.i18n[lang.locale];
 
   return (
     <>
@@ -126,25 +126,15 @@ const Index = ({
           </Social>
         </HeroInner>
       </Hero>
-      <IndexWrapper
+      {/* <IndexWrapper
         id={website.skipNavId}
         style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
       >
         <Title style={{ marginTop: "4rem" }}>{i18n.recent} Posts</Title>
-        <Listing posts={posts.edges} />
         <Title style={{ marginTop: "8rem" }}>
           {i18n.recent} {i18n.projects}
         </Title>
-        <ProjectListing>
-          {projects.edges[0].node.data.body.map((project) => (
-            <li key={project.primary.label.text}>
-              <a href={project.primary.link.url}>
-                {project.primary.label.text}
-              </a>
-            </li>
-          ))}
-        </ProjectListing>
-      </IndexWrapper>
+      </IndexWrapper> */}
     </>
   );
 };
@@ -153,10 +143,8 @@ export default Index;
 
 Index.propTypes = {
   data: PropTypes.shape({
-    posts: PropTypes.object.isRequired,
     homepage: PropTypes.object.isRequired,
     social: PropTypes.object.isRequired,
-    projects: PropTypes.object.isRequired,
   }).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
@@ -177,40 +165,6 @@ export const pageQuery = graphql`
       }
     }
     social: allPrismicHeroLinks(filter: { lang: { eq: $locale } }) {
-      edges {
-        node {
-          data {
-            body {
-              primary {
-                label {
-                  text
-                }
-                link {
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    posts: allPrismicPost(
-      sort: { fields: [data___date], order: DESC }
-      filter: { lang: { eq: $locale } }
-    ) {
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
-            }
-            date(formatString: "DD.MM.YYYY")
-          }
-        }
-      }
-    }
-    projects: allPrismicProjects(filter: { lang: { eq: $locale } }) {
       edges {
         node {
           data {

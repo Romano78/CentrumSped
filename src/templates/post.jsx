@@ -35,12 +35,6 @@ const Post = ({
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
 
-  const { data } = prismicPost;
-  let categories = false;
-  if (data.categories[0].category) {
-    categories = data.categories.map((c) => c.category.document[0].data.name);
-  }
-
   return (
     <>
       <SEO
@@ -88,29 +82,17 @@ export const pageQuery = graphql`
   query PostBySlug($uid: String!, $locale: String!) {
     prismicPost(uid: { eq: $uid }, lang: { eq: $locale }) {
       uid
-      first_publication_date
-      last_publication_date
       data {
         title {
           text
         }
         description
-        date(formatString: "DD.MM.YYYY")
         body {
           ... on PrismicPostBodyText {
             slice_type
             id
             primary {
               text {
-                html
-              }
-            }
-          }
-          ... on PrismicPostBodyCodeBlock {
-            slice_type
-            id
-            primary {
-              code_block {
                 html
               }
             }
@@ -133,11 +115,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allPrismicPost(
-      limit: 2
-      sort: { fields: [data___date], order: DESC }
-      filter: { lang: { eq: $locale } }
-    ) {
+    posts: allPrismicPost(limit: 2, filter: { lang: { eq: $locale } }) {
       edges {
         node {
           uid
@@ -145,7 +123,6 @@ export const pageQuery = graphql`
             title {
               text
             }
-            date(formatString: "DD.MM.YYYY")
           }
         }
       }

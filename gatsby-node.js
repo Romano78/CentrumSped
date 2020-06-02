@@ -50,7 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await wrapper(
     graphql(`
       {
-        posts: allPrismicPost(sort: { fields: [data___date], order: DESC }) {
+        posts: allPrismicPost {
           edges {
             node {
               id
