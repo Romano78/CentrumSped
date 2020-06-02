@@ -1,21 +1,21 @@
 /* eslint no-unused-expressions: 0 */
 /* eslint react/destructuring-assignment: 0 */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import { Global, css } from '@emotion/core'
-import styled from '@emotion/styled'
-import { ThemeProvider } from 'emotion-theming'
-import '@reach/skip-nav/styles.css'
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { Global, css } from "@emotion/core";
+import styled from "@emotion/styled";
+import { ThemeProvider } from "emotion-theming";
+import "@reach/skip-nav/styles.css";
 
-import Footer from './Footer'
-import SkipNavLink from './SkipNavLink'
-import { theme, reset } from '../styles'
-import i18n from '../../config/i18n'
+import Footer from "./Footer";
+import SkipNavLink from "./SkipNavLink";
+import { theme, reset } from "../styles";
+import i18n from "../../config/i18n";
 
-import 'typeface-lora'
-import 'typeface-source-sans-pro'
+import "typeface-lora";
+import "typeface-source-sans-pro";
 
 const globalStyle = css`
   ${reset}
@@ -30,6 +30,7 @@ const globalStyle = css`
     color: ${theme.colors.greyDarker};
     background-color: ${theme.colors.bg};
   }
+
   ::selection {
     color: ${theme.colors.bg};
     background-color: ${theme.colors.primary};
@@ -70,23 +71,19 @@ const globalStyle = css`
       font-size: 0.563rem !important;
     }
   }
-`
+`;
 
 const LocaleSwitcher = styled.div`
   position: absolute;
   top: 0;
   right: 0;
   padding: 1rem;
-`
+`;
 
-const LocaleContext = React.createContext()
+const LocaleContext = React.createContext();
 
 const Layout = ({ children, pageContext: { locale } }) => {
-  const data = useStaticQuery(query)
-  const footer = data.allPrismicHomepage.edges
-    .filter(edge => edge.node.lang === locale)
-    .map(r => r.node.data.footer.html)
-    .toString()
+  const data = useStaticQuery(query);
 
   return (
     <LocaleContext.Provider value={{ locale, i18n }}>
@@ -95,25 +92,23 @@ const Layout = ({ children, pageContext: { locale } }) => {
           <Global styles={globalStyle} />
           <SkipNavLink />
           <LocaleSwitcher data-name="locale-switcher">
-            <Link hrefLang="de-de" to="/">
-              DE
-            </Link>{' '}
-            /{' '}
-            <Link hrefLang="en-gb" to="/en">
+            <Link hrefLang="cs-cz" to="/">
+              CZ
+            </Link>{" "}
+            /{" "}
+            <Link hrefLang="en-us" to="/en">
               EN
             </Link>
           </LocaleSwitcher>
           {children}
-          <Footer>
-            <div dangerouslySetInnerHTML={{ __html: footer }} />
-          </Footer>
+          {/* <Footer></Footer> */}
         </>
       </ThemeProvider>
     </LocaleContext.Provider>
-  )
-}
+  );
+};
 
-export { LocaleContext, Layout }
+export { LocaleContext, Layout };
 
 const query = graphql`
   query LayoutQuery {
@@ -121,20 +116,15 @@ const query = graphql`
       edges {
         node {
           lang
-          data {
-            footer {
-              html
-            }
-          }
         }
       }
     }
   }
-`
+`;
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
   pageContext: PropTypes.shape({
     locale: PropTypes.string.isRequired,
   }).isRequired,
-}
+};
