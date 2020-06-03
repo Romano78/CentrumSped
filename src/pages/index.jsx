@@ -6,6 +6,8 @@ import { Wrapper, Title } from "../components";
 // import website from "../../config/website";
 // import { LocaleContext } from "../components/Layout";
 import SEO from "../components/SEO";
+import Header from "../components/Header";
+import Img from "gatsby-image";
 
 const Hero = styled.header`
   background-color: ${(props) => props.theme.colors.greyLight};
@@ -87,13 +89,28 @@ const Index = ({
   return (
     <>
       <SEO pathname={location.pathname} locale={locale} />
+      <Header>
+        <div className="nav-center">
+          <div className="nav-header">
+            <Img
+              fixed={
+                homepage.data.oddil[0].sekce_polozka.document[0].data.logo
+                  .localFile.childImageSharp.fixed
+              }
+            />
+          </div>
+          <div className="nav-link" invert="true">
+            <a>PRODUKTY</a>
+            <a> O NÁS</a>
+            <a>KALENDÁŘ AKCÍ</a>
+            <a>PARTNEŘI</a>
+            <a>GALERIE</a>
+            <a>KONTAKTY</a>
+          </div>
+        </div>
+      </Header>
       <Hero>
-        <HeroInner>
-          <h1>{homepage.data.title.text}</h1>
-          <HeroText
-            dangerouslySetInnerHTML={{ __html: homepage.data.content.html }}
-          />
-        </HeroInner>
+        <HeroInner></HeroInner>
       </Hero>
     </>
   );
@@ -116,14 +133,93 @@ export const pageQuery = graphql`
   query IndexQuery($locale: String!) {
     homepage: prismicHomepage(lang: { eq: $locale }) {
       data {
-        title {
-          text
-        }
-        content {
-          html
+        oddil {
+          sekce_polozka {
+            document {
+              ... on PrismicHeader {
+                data {
+                  links {
+                    galerie {
+                      id
+                    }
+                    kontakty {
+                      id
+                    }
+                    o_nas {
+                      id
+                    }
+                    partneri {
+                      id
+                    }
+                    produkty {
+                      id
+                    }
+                  }
+                  logo {
+                    localFile {
+                      childImageSharp {
+                        fixed {
+                          ...GatsbyImageSharpFixed_withWebp_tracedSVG
+                        }
+                      }
+                      extension
+                      publicURL
+                    }
+                  }
+                }
+              }
+              ... on PrismicOddilKarty {
+                data {
+                  nadpis {
+                    raw {
+                      text
+                    }
+                  }
+                  obsah {
+                    raw {
+                      text
+                    }
+                  }
+                  foto {
+                    localFile {
+                      childImageSharp {
+                        fixed {
+                          ...GatsbyImageSharpFixed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              ... on PrismicProductSection {
+                data {
+                  nadpis {
+                    raw {
+                      text
+                    }
+                  }
+                  obsah {
+                    raw {
+                      text
+                    }
+                  }
+                  foto {
+                    localFile {
+                      childImageSharp {
+                        fixed {
+                          ...GatsbyImageSharpFixed
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
+
     social: allPrismicHeroLinks(filter: { lang: { eq: $locale } }) {
       edges {
         node {

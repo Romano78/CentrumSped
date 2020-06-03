@@ -1,33 +1,55 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import LocalizedLink from './LocalizedLink'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "@emotion/styled";
+import LocalizedLink from "./LocalizedLink";
+import { useStaticQuery, graphql } from "gatsby";
+import { theme } from "../styles";
 
 const StyledHeader = styled.nav`
-  padding-bottom: 2rem;
   a {
-    color: ${props => (props.invert ? props.theme.colors.greyLight : props.theme.colors.greyDark)};
+    display: flex;
+    color: ${theme.colors.primary};
     font-weight: 400;
+    padding-right: 10px;
+
     font-style: normal;
-    font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: "Source Sans Pro", -apple-system, "BlinkMacSystemFont",
+      "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
-`
 
-const Header = ({ invert }) => (
-  <StyledHeader invert={invert}>
-    <LocalizedLink to="/" aria-label="Back to Home">
-      Frontend Developer
-    </LocalizedLink>
-  </StyledHeader>
-)
+  .nav-header {
+    max-width: 1170px;
+    height: 153px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+  }
 
-export default Header
+  .nav-center {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-link {
+    display: flex;
+    padding-right: 50px;
+  }
+`;
+
+const Header = ({ invert, children }) => (
+  <StyledHeader invert={invert}>{children}</StyledHeader>
+);
+
+export default Header;
 
 Header.propTypes = {
   invert: PropTypes.bool,
-}
+};
 
 Header.defaultProps = {
   invert: false,
-}
+};
