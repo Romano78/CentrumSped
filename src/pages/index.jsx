@@ -92,10 +92,11 @@ const Index = ({
       <Header>
         <div className="nav-center">
           <div className="nav-header">
-            <Img
-              fixed={
+            <img
+              style={{ width: "550px" }}
+              src={
                 homepage.data.oddil[0].sekce_polozka.document[0].data.logo
-                  .localFile.childImageSharp.fixed
+                  .localFile.publicURL
               }
             />
           </div>

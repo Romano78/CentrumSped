@@ -8,6 +8,7 @@ import { Global, css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "emotion-theming";
 import "@reach/skip-nav/styles.css";
+import ReactCountryFlag from "react-country-flag";
 
 import Footer from "./Footer";
 import SkipNavLink from "./SkipNavLink";
@@ -76,8 +77,12 @@ const globalStyle = css`
 const LocaleSwitcher = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 40px;
   padding: 1rem;
+
+  a {
+    padding: 2px;
+  }
 `;
 
 const LocaleContext = React.createContext();
@@ -93,11 +98,24 @@ const Layout = ({ children, pageContext: { locale } }) => {
           <SkipNavLink />
           <LocaleSwitcher data-name="locale-switcher">
             <Link hrefLang="cs-cz" to="/">
-              CZ
-            </Link>{" "}
-            /{" "}
+              <ReactCountryFlag
+                countryCode="GB"
+                svg
+                style={{
+                  width: "25px",
+                  height: "17.2px",
+                }}
+              />
+            </Link>
             <Link hrefLang="en-us" to="/en">
-              EN
+              <ReactCountryFlag
+                countryCode="CZ"
+                svg
+                style={{
+                  width: "25px",
+                  height: "17.2px",
+                }}
+              />
             </Link>
           </LocaleSwitcher>
           {children}
