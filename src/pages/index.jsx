@@ -7,10 +7,10 @@ import { Wrapper, Title } from "../components";
 // import { LocaleContext } from "../components/Layout";
 import SEO from "../components/SEO";
 import Header from "../components/Header";
-import Img from "gatsby-image";
+import Banner from "../components/Banner";
+import StyledHero from "../components/StyledHero";
 
 const Hero = styled.header`
-  background-color: ${(props) => props.theme.colors.greyLight};
   display: flex;
   align-items: center;
   min-height: 100vh;
@@ -110,9 +110,19 @@ const Index = ({
           </div>
         </div>
       </Header>
-      <Hero>
-        <HeroInner></HeroInner>
-      </Hero>
+      <StyledHero
+        home="true"
+        img={homepage.data.banner_image.localFile.childImageSharp.fluid}
+      >
+        <Banner
+          title={homepage.data.title.raw[0].text}
+          info={homepage.data.body_image.raw[0].text}
+        >
+          {console.log(homepage.data.title.raw[0].text)}
+        </Banner>
+      </StyledHero>
+
+      <Hero></Hero>
     </>
   );
 };
@@ -158,11 +168,6 @@ export const pageQuery = graphql`
                   }
                   logo {
                     localFile {
-                      childImageSharp {
-                        fixed {
-                          ...GatsbyImageSharpFixed_withWebp_tracedSVG
-                        }
-                      }
                       extension
                       publicURL
                     }
@@ -185,7 +190,7 @@ export const pageQuery = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          ...GatsbyImageSharpFixed
+                          src
                         }
                       }
                     }
@@ -208,7 +213,7 @@ export const pageQuery = graphql`
                     localFile {
                       childImageSharp {
                         fixed {
-                          ...GatsbyImageSharpFixed
+                          src
                         }
                       }
                     }
@@ -218,9 +223,27 @@ export const pageQuery = graphql`
             }
           }
         }
+        title {
+          raw {
+            text
+          }
+        }
+        body_image {
+          raw {
+            text
+          }
+        }
+        banner_image {
+          localFile {
+            childImageSharp {
+              fluid(quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
-
     social: allPrismicHeroLinks(filter: { lang: { eq: $locale } }) {
       edges {
         node {
