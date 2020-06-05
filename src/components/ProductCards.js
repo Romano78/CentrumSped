@@ -20,32 +20,6 @@ const ProductCards = ({ className, children, img, title, description }) => {
             </div>
           </div>
         </div>
-        <div className="card">
-          <div className="card-image">
-            <Img fluid={img} />
-          </div>
-          <div className="card-body">
-            <div className="card-title">
-              <h3>{title}</h3>
-            </div>
-            <div className="card-description">
-              <p>{description}</p>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-image">
-            <Img fluid={img} />
-          </div>
-          <div className="card-body">
-            <div className="card-title">
-              <h3>{title}</h3>
-            </div>
-            <div className="card-description">
-              <p>{description}</p>
-            </div>
-          </div>
-        </div>
       </section>
       {children}
     </>
