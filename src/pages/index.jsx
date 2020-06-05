@@ -10,6 +10,7 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import StyledHero from "../components/StyledHero";
 import Product from "../components/Product";
+import ProductCards from "../components/ProductCards";
 
 const Hero = styled.header`
   display: flex;
@@ -134,7 +135,14 @@ const Index = ({
             .childImageSharp.fluid
         }
       ></Product>
-      <Hero />
+      <ProductCards
+        title="Hello"
+        description="Hello You this is the description"
+        img={
+          homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
+            .childImageSharp.fluid
+        }
+      ></ProductCards>
     </>
   );
 };
