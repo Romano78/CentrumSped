@@ -17,7 +17,8 @@ export default styled(Banner)`
   position: absolute;
   left: 0px;
   width: 50vw;
-  height: 533px;
+  height: 100vh;
+  max-height: 495px;
   top: 0px;
   background-color: white;
   background: rgba(255, 255, 255, 0.5);
@@ -34,5 +35,12 @@ export default styled(Banner)`
 
   p {
     text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    h1 {
+      text-align: center;
+      padding-left: 0px;
+    }
   }
 `;

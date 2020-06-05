@@ -9,6 +9,7 @@ import SEO from "../components/SEO";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import StyledHero from "../components/StyledHero";
+import Product from "../components/Product";
 
 const Hero = styled.header`
   display: flex;
@@ -117,12 +118,23 @@ const Index = ({
         <Banner
           title={homepage.data.title.raw[0].text}
           info={homepage.data.body_image.raw[0].text}
-        >
-          {console.log(homepage.data.title.raw[0].text)}
-        </Banner>
+        ></Banner>
       </StyledHero>
-
-      <Hero></Hero>
+      <Product
+        title={
+          homepage.data.oddil[1].sekce_polozka.document[0].data.nadpis.raw[0]
+            .text
+        }
+        description={
+          homepage.data.oddil[1].sekce_polozka.document[0].data.obsah.raw[0]
+            .text
+        }
+        img={
+          homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
+            .childImageSharp.fluid
+        }
+      ></Product>
+      <Hero />
     </>
   );
 };
@@ -189,8 +201,8 @@ export const pageQuery = graphql`
                   foto {
                     localFile {
                       childImageSharp {
-                        fixed {
-                          src
+                        fluid {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -212,8 +224,8 @@ export const pageQuery = graphql`
                   foto {
                     localFile {
                       childImageSharp {
-                        fixed {
-                          src
+                        fluid(quality: 90) {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -236,7 +248,7 @@ export const pageQuery = graphql`
         banner_image {
           localFile {
             childImageSharp {
-              fluid(quality: 100) {
+              fluid(quality: 100, maxWidth: 1920) {
                 ...GatsbyImageSharpFluid
               }
             }

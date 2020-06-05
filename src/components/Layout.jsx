@@ -47,14 +47,14 @@ const globalStyle = css`
       text-decoration: underline;
     }
   }
-  @media (max-width: ${theme.breakpoints.m}) {
+  @media (max-width: ${theme.breakpoints.s}) {
     html {
       font-size: 16px !important;
     }
   }
   @media (max-width: ${theme.breakpoints.s}) {
     h1 {
-      font-size: 2.369rem !important;
+      font-size: 1rem !important;
     }
     h2 {
       font-size: 1.777rem !important;
@@ -76,8 +76,8 @@ const globalStyle = css`
 
 const LocaleSwitcher = styled.div`
   position: absolute;
-  top: 0;
-  right: 40px;
+  top: -5px;
+  right: 43px;
   padding: 1rem;
 
   a {

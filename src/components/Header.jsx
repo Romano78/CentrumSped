@@ -20,7 +20,7 @@ const StyledHeader = styled.nav`
 
   .nav-header {
     max-width: 1170px;
-    height: 153px;
+    height: 110px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,6 +37,7 @@ const StyledHeader = styled.nav`
   .nav-link {
     display: flex;
     padding-right: 50px;
+    padding-top: 4px;
   }
 `;
 
