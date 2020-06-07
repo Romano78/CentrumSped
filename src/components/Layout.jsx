@@ -20,7 +20,7 @@ import "typeface-source-sans-pro";
 
 const globalStyle = css`
   ${reset}
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     color: ${theme.colors.primary};
   }
   html {

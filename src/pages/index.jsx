@@ -11,6 +11,7 @@ import Banner from "../components/Banner";
 import StyledHero from "../components/StyledHero";
 import Product from "../components/Product";
 import ProductCards from "../components/ProductCards";
+import ProductSingleCard from "../components/ProductSingleCard";
 
 const Hero = styled.header`
   display: flex;
@@ -132,17 +133,44 @@ const Index = ({
         }
         img={
           homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
-            .childImageSharp.fluid
+            .childImageSharp.fixed
         }
       ></Product>
-      <ProductCards
+      <ProductSingleCard
+        title={
+          homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis.raw[0]
+            .text
+        }
+        description={
+          homepage.data.oddil[4].sekce_polozka.document[0].data.obsah.raw[0]
+            .text
+        }
+        img1={
+          homepage.data.oddil[4].sekce_polozka.document[0].data.foto.localFile
+            .childImageSharp.fixed
+        }
+        img2={
+          homepage.data.oddil[4].sekce_polozka.document[0].data.foto.localFile
+            .childImageSharp.fixed
+        }
+        cardFooterText={
+          homepage.data.oddil[4].sekce_polozka.document[0].data
+            .footer_image_text.raw[0].text
+        }
+      >
+        {console.log(
+          homepage.data.oddil[4].sekce_polozka.document[0].data
+            .footer_image_text.raw[0].text
+        )}
+      </ProductSingleCard>
+      {/* <ProductCards
         title="Hello"
         description="Hello You this is the description"
         img={
           homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
             .childImageSharp.fluid
         }
-      ></ProductCards>
+      ></ProductCards> */}
     </>
   );
 };
@@ -209,10 +237,15 @@ export const pageQuery = graphql`
                   foto {
                     localFile {
                       childImageSharp {
-                        fluid {
-                          ...GatsbyImageSharpFluid
+                        fixed(width: 400, height: 300) {
+                          ...GatsbyImageSharpFixed
                         }
                       }
+                    }
+                  }
+                  footer_image_text {
+                    raw {
+                      text
                     }
                   }
                 }
@@ -232,8 +265,8 @@ export const pageQuery = graphql`
                   foto {
                     localFile {
                       childImageSharp {
-                        fluid(quality: 90) {
-                          ...GatsbyImageSharpFluid
+                        fixed(width: 688, height: 400) {
+                          ...GatsbyImageSharpFixed
                         }
                       }
                     }
@@ -256,7 +289,7 @@ export const pageQuery = graphql`
         banner_image {
           localFile {
             childImageSharp {
-              fluid(quality: 100, maxWidth: 1920) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }

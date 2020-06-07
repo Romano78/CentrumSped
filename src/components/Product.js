@@ -10,7 +10,7 @@ const Product = ({ className, img, children, title, description }) => {
         <p>{description}</p>
       </div>
       <div className="product-image">
-        <Img fluid={img} />
+        <Img fixed={img} />
       </div>
       {children}
     </div>
