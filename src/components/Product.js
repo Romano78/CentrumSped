@@ -1,6 +1,7 @@
 import React, { Children } from "react";
 import styled from "styled-components";
 import Img from "gatsby-image/withIEPolyfill";
+import Title from "../components/Title";
 
 const Product = ({ className, img, children, title, description }) => {
   return (
@@ -32,6 +33,9 @@ export default styled(Product)`
   .product-image {
     position: relative;
     top: 12px;
+  }
+
+  img {
     box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
       0px 4px 4px rgba(0, 0, 0, 0.25);
   }

@@ -115,7 +115,7 @@ const Index = ({
       </Header>
       <StyledHero
         home="true"
-        img={homepage.data.banner_image.localFile.childImageSharp.fluid}
+        img={homepage.data.banner_image.localFile.childImageSharp.fixed}
       >
         <Banner
           title={homepage.data.title.raw[0].text}
@@ -137,12 +137,20 @@ const Index = ({
         }
       ></Product>
       <ProductSingleCard
-        title={
+        title1={
           homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis.raw[0]
             .text
         }
-        description={
+        title2={
+          homepage.data.oddil[2].sekce_polozka.document[0].data.nadpis.raw[0]
+            .text
+        }
+        description1={
           homepage.data.oddil[4].sekce_polozka.document[0].data.obsah.raw[0]
+            .text
+        }
+        description2={
+          homepage.data.oddil[2].sekce_polozka.document[0].data.obsah.raw[0]
             .text
         }
         img1={
@@ -150,27 +158,19 @@ const Index = ({
             .childImageSharp.fixed
         }
         img2={
-          homepage.data.oddil[4].sekce_polozka.document[0].data.foto.localFile
+          homepage.data.oddil[2].sekce_polozka.document[0].data.foto.localFile
             .childImageSharp.fixed
         }
-        cardFooterText={
+        cardFooterText1={
           homepage.data.oddil[4].sekce_polozka.document[0].data
             .footer_image_text.raw[0].text
         }
-      >
-        {console.log(
-          homepage.data.oddil[4].sekce_polozka.document[0].data
+        cardFooterText2={
+          homepage.data.oddil[2].sekce_polozka.document[0].data
             .footer_image_text.raw[0].text
-        )}
-      </ProductSingleCard>
-      {/* <ProductCards
-        title="Hello"
-        description="Hello You this is the description"
-        img={
-          homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
-            .childImageSharp.fluid
         }
-      ></ProductCards> */}
+      ></ProductSingleCard>
+      <ProductCards></ProductCards>
     </>
   );
 };
@@ -289,8 +289,8 @@ export const pageQuery = graphql`
         banner_image {
           localFile {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              fixed(width: 1441, height: 534) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

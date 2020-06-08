@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledHero = ({ img, className, children, home }) => {
   return (
-    <BackgroundImage className={className} fluid={img} home={home}>
+    <BackgroundImage className={className} fixed={img} home={home}>
       {children}
     </BackgroundImage>
   );

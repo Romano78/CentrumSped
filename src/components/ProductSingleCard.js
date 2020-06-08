@@ -8,9 +8,12 @@ const ProductSingleCard = ({
   children,
   img1,
   img2,
-  title,
-  description,
-  cardFooterText,
+  title1,
+  title2,
+  description1,
+  description2,
+  cardFooterText1,
+  cardFooterText2,
 }) => {
   return (
     <>
@@ -18,30 +21,30 @@ const ProductSingleCard = ({
         <div className="card">
           <div className="card-image">
             <Img fixed={img1} />
-            <p>{cardFooterText}</p>
+            <p>{cardFooterText1}</p>
           </div>
           <div className="card-body">
             <div className="card-title">
-              <h3>{title}</h3>
+              <h3>{title1}</h3>
             </div>
             <div className="card-description">
-              <p>{description}</p>
+              <p>{description1}</p>
             </div>
           </div>
         </div>
       </section>
       <section className={className}>
         <div className="card-2">
-          <div className="card-image">
+          <div className="card-image-2">
             <Img fixed={img2} />
-            <p>{cardFooterText}</p>
+            <p>{cardFooterText2}</p>
           </div>
-          <div className="card-body">
-            <div className="card-title">
-              <h3>{title}</h3>
+          <div className="card-body-2">
+            <div className="card-title-2">
+              <h3>{title2}</h3>
             </div>
-            <div className="card-description">
-              <p>{description}</p>
+            <div className="card-description-2">
+              <p>{description2}</p>
             </div>
           </div>
         </div>
@@ -64,14 +67,26 @@ export default styled(ProductSingleCard)`
     font-size: 14px;
   }
 
-  .card-body h3 {
-    text-align: center;
+  .card-image-2 p {
+    padding-right: 15px;
+    font-size: 14px;
   }
 
   .card-body p {
     text-align: left;
+    margin-right: 154px;
   }
 
+  .card-body-2 p {
+    margin-left: 154px;
+  }
+
+  .card-2 h3 {
+    text-align: right;
+  }
+  .card-2 p {
+    text-align: right;
+  }
   .card-2 {
     display: flex;
     flex-direction: row-reverse;
