@@ -151,10 +151,6 @@ export default styled(BranchNitra)`
     margin-right: 36px;
   }
 
-  .branch-body-list ol {
-    margin-bottom: 8px;
-  }
-
   .branch-body-list span {
     padding-right: 4px;
     color: ${theme.colors.primary};
@@ -178,10 +174,10 @@ export default styled(BranchNitra)`
   }
 
   .branch-list-border {
-    border: 1px solid #39197a;
+    border: 1px solid ${theme.colors.primary};
     width: 247px;
     position: relative;
-    bottom: 270px;
+    bottom: 281px;
     left: 194px;
   }
 `;

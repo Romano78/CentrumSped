@@ -46,27 +46,16 @@ const ProductCards = ({ className, children }) => {
           {data.allPrismicCards.nodes[0].data.productcards.map(
             (product, index) => {
               return (
-                <div className="grid-item">
+                <div key={index} className="grid-item">
                   <div className="image">
                     <BackgroundImage
                       fixed={product.cardimage.localFile.childImageSharp.fixed}
                       className="background-image"
                     >
-                      <h3
-                        key={product}
-                        onClick={() => {
-                          setInfo(product);
-                        }}
-                      >
-                        {product.cardtitle.raw[0].text}
-                      </h3>
+                      <h3>{product.cardtitle.raw[0].text}</h3>
                     </BackgroundImage>
                     <div className="card-info">
-                      {showInfo === product ? (
-                        <p>{product.cardinfo.raw[0].text}</p>
-                      ) : (
-                        ""
-                      )}
+                      <p>{product.cardinfo.raw[0].text}</p>
                     </div>
                   </div>
                 </div>
@@ -82,11 +71,10 @@ const ProductCards = ({ className, children }) => {
 
 export default styled(ProductCards)`
   text-align: center;
-
+  padding: 100px;
   .card-container {
     display: inline-grid;
     grid-template-columns: 1fr 1fr;
-    grid-row-gap: 120px;
     grid-column-gap: 79px;
   }
 
@@ -107,9 +95,8 @@ export default styled(ProductCards)`
 
   .card-info {
     width: 100%;
-    padding-left: 50px;
-    padding-right: 50px;
-    word-break: break-all;
+    padding-left: 9px;
     text-align: left;
+    max-width: 500px;
   }
 `;

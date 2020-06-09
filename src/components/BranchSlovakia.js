@@ -157,10 +157,6 @@ export default styled(BranchSlovakia)`
     color: white;
   }
 
-  .branch-body-list ol {
-    margin-bottom: 8px;
-  }
-
   .branch-body-list span {
     padding-right: 4px;
     color: white;
@@ -195,7 +191,7 @@ export default styled(BranchSlovakia)`
     border: 1px solid white;
     width: 247px;
     position: relative;
-    bottom: 281px;
+    bottom: 268px;
     left: 194px;
   }
 `;

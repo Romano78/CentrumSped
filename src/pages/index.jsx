@@ -17,6 +17,7 @@ import BranchPraha from "../components/BranchePraha";
 import BranchSlovakia from "../components/BranchSlovakia";
 import Footer from "../components/Footer";
 import BranchNitra from "../components/BranchNitra";
+import Parteneri from "../components/Parteneri";
 
 const Hero = styled.header`
   display: flex;
@@ -193,7 +194,11 @@ const Index = ({
       <BranchPraha />
       <BranchSlovakia />
       <BranchNitra />
-      <Footer></Footer>
+      <Parteneri />
+      <Footer>
+        <p> Právní upozornění</p>
+        <p>©2020 CENTRUMSPED s.r.o. Všechna práva vyhrazena.</p>
+      </Footer>
     </>
   );
 };

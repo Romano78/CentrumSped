@@ -159,11 +159,7 @@ export default styled(BranchePraha)`
   }
 
   .branch-body-list {
-    margin-right: 36px;
-  }
-
-  .branch-body-list ol {
-    margin-bottom: 8px;
+    margin-right: 50px;
   }
 
   .branch-body-list span {
