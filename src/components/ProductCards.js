@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import { theme } from "../styles";
 import { useStaticQuery, graphql } from "gatsby";
+import { Transition } from "react-transition-group";
 
 const ProductCards = ({ className, children }) => {
   const data = useStaticQuery(graphql`
@@ -37,7 +38,14 @@ const ProductCards = ({ className, children }) => {
     }
   `);
 
-  const [showInfo, setInfo] = useState(null);
+  const [showInfo, setInfo] = useState({});
+
+  const toggleInfo = (id) => {
+    setInfo((prevShowInfo) => ({
+      ...prevShowInfo,
+      [id]: !prevShowInfo[id],
+    }));
+  };
 
   return (
     <>
@@ -46,19 +54,29 @@ const ProductCards = ({ className, children }) => {
           {data.allPrismicCards.nodes[0].data.productcards.map(
             (product, index) => {
               return (
-                <div key={index} className="grid-item">
-                  <div className="image">
-                    <BackgroundImage
-                      fixed={product.cardimage.localFile.childImageSharp.fixed}
-                      className="background-image"
-                    >
-                      <h3>{product.cardtitle.raw[0].text}</h3>
-                    </BackgroundImage>
-                    <div className="card-info">
-                      <p>{product.cardinfo.raw[0].text}</p>
+                <Fragment key={index}>
+                  <div className="grid-item">
+                    <div className="image">
+                      <BackgroundImage
+                        fixed={
+                          product.cardimage.localFile.childImageSharp.fixed
+                        }
+                        className="background-image"
+                      >
+                        {product.cardtitle.raw[0].text ? (
+                          <h3 onClick={() => toggleInfo(index)}>
+                            {product.cardtitle.raw[0].text}
+                          </h3>
+                        ) : null}
+                      </BackgroundImage>
+                      <div className="card-info">
+                        {showInfo[index] ? (
+                          <p>{product.cardinfo.raw[0].text}</p>
+                        ) : null}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Fragment>
               );
             }
           )}
@@ -76,6 +94,7 @@ export default styled(ProductCards)`
     display: inline-grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 79px;
+    grid-row-gap: 90px;
   }
 
   .background-image {
@@ -98,5 +117,9 @@ export default styled(ProductCards)`
     padding-left: 9px;
     text-align: left;
     max-width: 500px;
+  }
+
+  .image:hover {
+    cursor: pointer;
   }
 `;

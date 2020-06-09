@@ -71,15 +71,16 @@ const BranchSlovakia = ({ className, children }) => {
   return (
     <section className={className}>
       <div className="branch-body-header">
-        <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
-        <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
+        {console.log(data.branch.nodes)}
+        <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
+        <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
       </div>
       <div className="branch-body-title">
-        <h4>{data.branch.nodes[2].data.kontakty_list_title.raw[0].text}:</h4>
+        <h4>{data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:</h4>
       </div>
       <div className="branch-body">
         <div className="branch-body-list">
-          {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
+          {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
             return (
               <ol key={index}>
                 <span>
@@ -93,7 +94,7 @@ const BranchSlovakia = ({ className, children }) => {
         <div className="branch-body-img">
           <Img
             fluid={
-              data.branch.nodes[2].data.kontakty_list[0].kontakty_image
+              data.branch.nodes[1].data.kontakty_list[0].kontakty_image
                 .localFile.childImageSharp.fluid
             }
           />
@@ -102,19 +103,19 @@ const BranchSlovakia = ({ className, children }) => {
       <div className="branch-footer">
         <h4>
           {
-            data.branch.nodes[2].data.kontakt_link.document[0].data
+            data.branch.nodes[1].data.kontakt_link.document[0].data
               .kontakt__title.raw[0].text
           }
         </h4>
         <p>
           {
-            data.branch.nodes[2].data.kontakt_link.document[0].data
+            data.branch.nodes[1].data.kontakt_link.document[0].data
               .kontakt_adresa.raw[0].text
           }
         </p>
         <p>
           {
-            data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_info
+            data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt_info
               .raw[0].text
           }
         </p>

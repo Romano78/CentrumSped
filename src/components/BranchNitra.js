@@ -149,6 +149,7 @@ export default styled(BranchNitra)`
 
   .branch-body-list {
     margin-right: 36px;
+    color: ${theme.colors.primary};
   }
 
   .branch-body-list span {

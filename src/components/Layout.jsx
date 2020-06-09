@@ -48,9 +48,9 @@ const globalStyle = css`
       text-decoration: underline;
     }
   }
-  /* @media (max-width: ${theme.breakpoints.s}) {
+  @media (max-width: ${theme.breakpoints.s}) {
     html {
-      font-size: 16px !important;
+      font-size: 24px !important;
     }
   }
   @media (max-width: ${theme.breakpoints.s}) {
@@ -72,7 +72,7 @@ const globalStyle = css`
     h6 {
       font-size: 0.563rem !important;
     }
-  } */
+  }
 `;
 
 const LocaleSwitcher = styled.div`
@@ -120,7 +120,7 @@ const Layout = ({ children, pageContext: { locale } }) => {
             </Link>
           </LocaleSwitcher>
           {children}
-          {/* <Footer></Footer> */}
+          <Footer></Footer>
         </>
       </ThemeProvider>
     </LocaleContext.Provider>

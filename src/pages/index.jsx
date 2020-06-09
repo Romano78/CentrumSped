@@ -196,8 +196,18 @@ const Index = ({
       <BranchNitra />
       <Parteneri />
       <Footer>
-        <p> Právní upozornění</p>
-        <p>©2020 CENTRUMSPED s.r.o. Všechna práva vyhrazena.</p>
+        <div className="footer">
+          <div className="top-footer">
+            <p>
+              CENTRUMSPED s.r.o. Výstaviště 416, Bubeneč, 170 00 Praha 7 IČ:
+              47124598 DIČ: CZ47124598 (VAT-TAX No., EORI No.)
+            </p>
+          </div>
+          <div className="bottom-footer">
+            <p> Právní upozornění</p>
+            <p>©2020 CENTRUMSPED s.r.o. Všechna práva vyhrazena.</p>
+          </div>
+        </div>
       </Footer>
     </>
   );

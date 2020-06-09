@@ -29,5 +29,6 @@ export default styled(Banner)`
 
   p {
     color: white;
+    text-transform: uppercase;
   }
 `;

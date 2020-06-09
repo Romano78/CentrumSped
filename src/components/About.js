@@ -5,7 +5,7 @@ import { theme } from "../styles";
 
 const About = ({ img, info, title, className, children }) => {
   return (
-    <div className={className}>
+    <div className={className} id="about">
       <div className="about">
         <h2>{title}</h2>
         <p>{info}</p>

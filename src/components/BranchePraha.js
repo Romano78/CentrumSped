@@ -160,6 +160,7 @@ export default styled(BranchePraha)`
 
   .branch-body-list {
     margin-right: 50px;
+    color: ${theme.colors.primary};
   }
 
   .branch-body-list span {

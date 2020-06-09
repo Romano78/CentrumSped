@@ -13,7 +13,21 @@ const StyledFooter = styled.footer`
     text-align: center;
     color: white;
     margin-bottom: 0px;
-    padding-top: 18px;
+  }
+
+  .footer {
+    height: 150px;
+  }
+
+  .top-footer {
+    height: 50%;
+    background-color: pink;
+    padding-top: 23px;
+  }
+
+  .bottom-footer{
+    height: 50%;
+    padding-top: 10px;
   }
 `;
 
