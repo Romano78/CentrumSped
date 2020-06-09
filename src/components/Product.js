@@ -1,7 +1,7 @@
 import React, { Children } from "react";
 import styled from "styled-components";
 import Img from "gatsby-image/withIEPolyfill";
-import Title from "../components/Title";
+import logo from "../images/titleDeco.png";
 
 const Product = ({ className, img, children, title, description }) => {
   return (
@@ -19,8 +19,7 @@ const Product = ({ className, img, children, title, description }) => {
 };
 
 export default styled(Product)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
 
   .product {
     margin-left: 131px;
@@ -28,6 +27,7 @@ export default styled(Product)`
 
   .product h2 {
     border-bottom: 1px solid;
+    padding-bottom: 10px;
   }
 
   .product-image {

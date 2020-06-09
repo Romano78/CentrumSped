@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 const StyledHero = ({ img, className, children, home }) => {
   return (
-    <BackgroundImage className={className} fixed={img} home={home}>
+    <BackgroundImage className={className} fluid={img} home={home}>
       {children}
     </BackgroundImage>
   );
 };
 
 export default styled(StyledHero)`
-  width: 1440px;
+  width: 100%;
   height: 495px;
   background-position: center;
   background-size: cover;
@@ -22,11 +22,11 @@ export default styled(StyledHero)`
   margin-bottom: 78px;
   box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18), 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  @media (max-height: 495px) {
+  /* @media (max-height: 495px) {
     height: 100vh;
   }
 
   @media (max-width: 1440px) {
     width: 100vw;
-  }
+  } */
 `;

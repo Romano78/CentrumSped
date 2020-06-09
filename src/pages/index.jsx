@@ -12,6 +12,11 @@ import StyledHero from "../components/StyledHero";
 import Product from "../components/Product";
 import ProductCards from "../components/ProductCards";
 import ProductSingleCard from "../components/ProductSingleCard";
+import About from "../components/About";
+import BranchPraha from "../components/BranchePraha";
+import BranchSlovakia from "../components/BranchSlovakia";
+import Footer from "../components/Footer";
+import BranchNitra from "../components/BranchNitra";
 
 const Hero = styled.header`
   display: flex;
@@ -115,7 +120,7 @@ const Index = ({
       </Header>
       <StyledHero
         home="true"
-        img={homepage.data.banner_image.localFile.childImageSharp.fixed}
+        img={homepage.data.banner_image.localFile.childImageSharp.fluid}
       >
         <Banner
           title={homepage.data.title.raw[0].text}
@@ -171,6 +176,24 @@ const Index = ({
         }
       ></ProductSingleCard>
       <ProductCards></ProductCards>
+      <About
+        title={
+          homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis.raw[0]
+            .text
+        }
+        info={
+          homepage.data.oddil[3].sekce_polozka.document[0].data.obsah.raw[0]
+            .text
+        }
+        img={
+          homepage.data.oddil[3].sekce_polozka.document[0].data.foto.localFile
+            .childImageSharp.fixed
+        }
+      ></About>
+      <BranchPraha />
+      <BranchSlovakia />
+      <BranchNitra />
+      <Footer></Footer>
     </>
   );
 };
@@ -289,8 +312,8 @@ export const pageQuery = graphql`
         banner_image {
           localFile {
             childImageSharp {
-              fixed(width: 1441, height: 534) {
-                ...GatsbyImageSharpFixed
+              fluid {
+                ...GatsbyImageSharpFluid
               }
             }
           }

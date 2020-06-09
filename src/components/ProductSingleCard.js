@@ -77,6 +77,10 @@ export default styled(ProductSingleCard)`
     margin-right: 154px;
   }
 
+  .card-body-2 {
+    padding-right: 18px;
+  }
+
   .card-body-2 p {
     margin-left: 154px;
   }
@@ -93,7 +97,14 @@ export default styled(ProductSingleCard)`
     display: flex;
     margin-top: 100px;
     padding: 32px;
-    width: 1279px;
+    width: 100%;
     margin-top: 0px;
+  }
+
+  .card-description-2 {
+    width: 800px;
+  }
+  .card-description-1 {
+    width: 800px;
   }
 `;

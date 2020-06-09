@@ -48,7 +48,7 @@ const globalStyle = css`
       text-decoration: underline;
     }
   }
-  @media (max-width: ${theme.breakpoints.s}) {
+  /* @media (max-width: ${theme.breakpoints.s}) {
     html {
       font-size: 16px !important;
     }
@@ -72,7 +72,7 @@ const globalStyle = css`
     h6 {
       font-size: 0.563rem !important;
     }
-  }
+  } */
 `;
 
 const LocaleSwitcher = styled.div`

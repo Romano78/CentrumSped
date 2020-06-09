@@ -14,7 +14,7 @@ const ProductCards = ({ className, children }) => {
               cardimage {
                 localFile {
                   childImageSharp {
-                    fixed(quality: 90) {
+                    fixed(quality: 90, width: 500, height: 325) {
                       ...GatsbyImageSharpFixed
                     }
                   }
@@ -46,26 +46,28 @@ const ProductCards = ({ className, children }) => {
           {data.allPrismicCards.nodes[0].data.productcards.map(
             (product, index) => {
               return (
-                <div className="image" key={index}>
-                  <BackgroundImage
-                    fixed={product.cardimage.localFile.childImageSharp.fixed}
-                    className="background-image"
-                  >
-                    <h3
-                      key={product}
-                      onClick={() => {
-                        setInfo(product);
-                      }}
+                <div className="grid-item">
+                  <div className="image">
+                    <BackgroundImage
+                      fixed={product.cardimage.localFile.childImageSharp.fixed}
+                      className="background-image"
                     >
-                      {product.cardtitle.raw[0].text}
-                    </h3>
-                  </BackgroundImage>
-                  <div className="card-info">
-                    {showInfo === product ? (
-                      <p>{product.cardinfo.raw[0].text}</p>
-                    ) : (
-                      ""
-                    )}
+                      <h3
+                        key={product}
+                        onClick={() => {
+                          setInfo(product);
+                        }}
+                      >
+                        {product.cardtitle.raw[0].text}
+                      </h3>
+                    </BackgroundImage>
+                    <div className="card-info">
+                      {showInfo === product ? (
+                        <p>{product.cardinfo.raw[0].text}</p>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               );
@@ -88,19 +90,18 @@ export default styled(ProductCards)`
     grid-column-gap: 79px;
   }
 
-  .card-title {
-    border-bottom: 1px solid ${theme.colors.primary};
-  }
-
   .background-image {
     opacity: 1 !important;
     border-width: 6px;
     height: 234px;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid ${theme.colors.primary};
+    border-width: 6px;
   }
 
   .background-image h3 {
     position: relative;
-    top: 50%;
+    top: 45%;
     text-align: center;
   }
 
