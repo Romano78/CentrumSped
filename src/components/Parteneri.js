@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Img from "gatsby-image/withIEPolyfill";
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
+import logo from "../images/title-logo.svg";
 
 const Parteneri = ({ className, children }) => {
   const data = useStaticQuery(graphql`
@@ -34,6 +35,9 @@ const Parteneri = ({ className, children }) => {
   return (
     <section className={className} id="parteneri">
       <div className="parteneri-header">
+        <span className="title-logo">
+          <img src={logo} alt="title-logo" />
+        </span>
         <h2>{data.parteneri.nodes[0].data.partneri_nadpis.raw[0].text}</h2>
       </div>
       <div className="parteneri-img">
@@ -51,9 +55,19 @@ const Parteneri = ({ className, children }) => {
 
 export default styled(Parteneri)`
   .parteneri-header {
-    margin-left: 131px;
+    margin-left: 145px;
     border-bottom: 1px solid ${theme.colors.primary};
     margin-top: 60px;
+    margin-bottom: 0px;
+  }
+
+  .title-logo {
+    padding-top: 5px;
+  }
+
+  .parteneri-header span {
+    position: absolute;
+    left: 24px;
   }
 
   .parteneri-img {

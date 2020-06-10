@@ -86,7 +86,7 @@ const BranchBruno = ({ className, children }) => {
       </div>
       <div className="branch-body-title">
         {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakty_list_title.raw[0].text ? (
+        data.branch.nodes[1].data.kontakty_list_title ? (
           <h4>{data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:</h4>
         ) : (
           ""
@@ -185,6 +185,10 @@ export default styled(BranchBruno)`
     padding-bottom: 4px;
     color: white;
     padding-top: 30x;
+  }
+
+  .branch-body-header p {
+    width: 657px;
   }
 
   .branch-body-header p {

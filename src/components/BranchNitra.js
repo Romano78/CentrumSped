@@ -188,6 +188,9 @@ export default styled(BranchNitra)`
     padding-bottom: 4px;
     padding-top: 30x;
   }
+  .branch-body-header p {
+    width: 657px;
+  }
 
   .branch-body-title {
     margin-left: 200px;

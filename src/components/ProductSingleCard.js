@@ -18,32 +18,40 @@ const ProductSingleCard = ({
   return (
     <>
       <section className={className}>
-        <div className="card">
-          <div className="card-image">
-            <Img fixed={img1} />
-            <p>{cardFooterText1}</p>
+        <div className="card-nitra">
+          <div className="card-nitra-image-container">
+            <div className="card-nitra-image">
+              <Img fixed={img1} objectFit="cover" />
+            </div>
+            <div className="card-nitra-text">
+              <p>{cardFooterText1}</p>
+            </div>
           </div>
-          <div className="card-body">
-            <div className="card-title">
+          <div className="card-nitra-body">
+            <div className="card-nitra-title">
               <h3>{title1}</h3>
             </div>
-            <div className="card-description">
+            <div className="card-nitra-description">
               <p>{description1}</p>
             </div>
           </div>
         </div>
       </section>
       <section className={className}>
-        <div className="card-2">
-          <div className="card-image-2">
-            <Img fixed={img2} />
-            <p>{cardFooterText2}</p>
+        <div className="card-bruno">
+          <div className="card-bruno-image-container">
+            <div className="card-bruno-image">
+              <Img fixed={img2} objectFit="cover" />
+            </div>
+            <div className="card-bruno-text">
+              <p>{cardFooterText2}</p>
+            </div>
           </div>
-          <div className="card-body-2">
-            <div className="card-title-2">
+          <div className="card-bruno-body">
+            <div className="card-bruno-title">
               <h3>{title2}</h3>
             </div>
-            <div className="card-description-2">
+            <div className="card-bruno-description">
               <p>{description2}</p>
             </div>
           </div>
@@ -55,43 +63,49 @@ const ProductSingleCard = ({
 };
 
 export default styled(ProductSingleCard)`
-  .card {
+  /* nitra card */
+
+  .card-nitra {
     display: flex;
     margin-top: 100px;
     padding: 32px;
     width: 1279px;
   }
 
-  .card-image p {
+  .card-nitra-image p {
     padding-left: 15px;
     font-size: 14px;
   }
 
-  .card-image-2 p {
+  .card-nitra-body p {
+    text-align: left;
+    margin-right: 154px;
+  }
+  .card-nitra-description {
+    width: 800px;
+  }
+
+  /* bruno-card */
+
+  .card-bruno-body {
+    padding-right: 18px;
+  }
+
+  .card-bruno-body p {
+    margin-left: 154px;
+  }
+  .card-bruno-image p {
     padding-right: 15px;
     font-size: 14px;
   }
 
-  .card-body p {
-    text-align: left;
-    margin-right: 154px;
-  }
-
-  .card-body-2 {
-    padding-right: 18px;
-  }
-
-  .card-body-2 p {
-    margin-left: 154px;
-  }
-
-  .card-2 h3 {
+  .card-bruno h3 {
     text-align: right;
   }
-  .card-2 p {
+  .card-bruno p {
     text-align: right;
   }
-  .card-2 {
+  .card-bruno {
     display: flex;
     flex-direction: row-reverse;
     display: flex;
@@ -101,10 +115,16 @@ export default styled(ProductSingleCard)`
     margin-top: 0px;
   }
 
-  .card-description-2 {
-    width: 800px;
+  .gatsby-image-wrapper {
+    vertical-align: middle;
   }
-  .card-description-1 {
+
+  .card-bruno-image {
+    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .card-bruno-description {
     width: 800px;
   }
 `;

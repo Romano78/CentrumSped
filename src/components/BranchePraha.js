@@ -4,6 +4,7 @@ import Img from "gatsby-image/withIEPolyfill";
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
 import { FaSquareFull } from "react-icons/fa";
+import logo from "../images/title-logo.svg";
 
 const BranchePraha = ({ className, children }) => {
   const data = useStaticQuery(graphql`
@@ -76,35 +77,38 @@ const BranchePraha = ({ className, children }) => {
   return (
     <section className={className} id="kontakty">
       <div className="branch-header">
-        <h2>{data.branch.nodes[3].data.kontakty_nadpis.raw[0].text}</h2>
+        <span className="title-logo">
+          <img src={logo} alt="title-logo" />
+        </span>
+        <h2>{data.branch.nodes[2].data.kontakty_nadpis.raw[0].text}</h2>
       </div>
       <div className="branch-body-header">
-        {data.branch.nodes[3] &&
-        data.branch.nodes[3].data.kontakty_subtitle.raw[0].text ? (
-          <h4>{data.branch.nodes[3].data.kontakty_subtitle.raw[0].text}</h4>
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakty_subtitle.raw[0].text ? (
+          <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
         ) : (
           ""
         )}
-        {data.branch.nodes[3] &&
-        data.branch.nodes[3].data.kontakty_obsah.raw[0].text ? (
-          <p>{data.branch.nodes[3].data.kontakty_obsah.raw[0].text}</p>
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakty_obsah.raw[0].text ? (
+          <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
         ) : (
           ""
         )}
       </div>
       <div className="branch-body-title">
-        {data.branch.nodes[3] &&
-        data.branch.nodes[3].data.kontakty_list_title.raw[0].text ? (
-          <h4>{data.branch.nodes[3].data.kontakty_list_title.raw[0].text}:</h4>
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakty_list_title.raw[0].text ? (
+          <h4>{data.branch.nodes[2].data.kontakty_list_title.raw[0].text}:</h4>
         ) : (
           ""
         )}
       </div>
       <div className="branch-body">
         <div className="branch-body-list">
-          {data.branch.nodes[3] && data.branch.nodes[3].data.kontakty_list ? (
+          {data.branch.nodes[2] && data.branch.nodes[2].data.kontakty_list ? (
             <>
-              {data.branch.nodes[3].data.kontakty_list.map((item, index) => {
+              {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
                 return (
                   <ol key={index}>
                     <span>
@@ -120,11 +124,11 @@ const BranchePraha = ({ className, children }) => {
           )}
         </div>
         <div className="branch-body-img">
-          {data.branch.nodes[3] &&
-          data.branch.nodes[3].data.kontakty_list[0].kontakty_image ? (
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakty_list[0].kontakty_image ? (
             <Img
               fluid={
-                data.branch.nodes[3].data.kontakty_list[0].kontakty_image
+                data.branch.nodes[2].data.kontakty_list[0].kontakty_image
                   .localFile.childImageSharp.fluid
               }
             />
@@ -134,12 +138,12 @@ const BranchePraha = ({ className, children }) => {
         </div>
       </div>
       <div className="branch-footer">
-        {data.branch.nodes[3] &&
-        data.branch.nodes[3].data.kontakt_link.document[0].data.kontakt__title
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt__title
           .raw[0].text ? (
           <h4>
             {
-              data.branch.nodes[3].data.kontakt_link.document[0].data
+              data.branch.nodes[2].data.kontakt_link.document[0].data
                 .kontakt__title.raw[0].text
             }
           </h4>
@@ -147,12 +151,12 @@ const BranchePraha = ({ className, children }) => {
           ""
         )}
 
-        {data.branch.nodes[3] &&
-        data.branch.nodes[3].data.kontakt_link.document[0].data.kontakt_adresa
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_adresa
           .raw[0].text ? (
           <p>
             {
-              data.branch.nodes[3].data.kontakt_link.document[0].data
+              data.branch.nodes[2].data.kontakt_link.document[0].data
                 .kontakt_adresa.raw[0].text
             }
           </p>
@@ -160,12 +164,12 @@ const BranchePraha = ({ className, children }) => {
           ""
         )}
 
-        {data.branch.nodes[3] &&
-        data.branch.nodes[3].data.kontakt_link.document[0].data.kontakt_info
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_info
           .raw[0].text ? (
           <p>
             {
-              data.branch.nodes[3].data.kontakt_link.document[0].data
+              data.branch.nodes[2].data.kontakt_link.document[0].data
                 .kontakt_info.raw[0].text
             }
           </p>
@@ -181,12 +185,23 @@ const BranchePraha = ({ className, children }) => {
 
 export default styled(BranchePraha)`
   .branch-header {
-    margin-left: 131px;
+    margin-left: 145px;
     text-transform: uppercase;
+    padding-bottom: 45px;
+    margin-top: 150px;
   }
+
+  .branch-header span {
+    position: absolute;
+    left: 24px;
+  }
+
+  .title-logo {
+    padding-top: 5px;
+  }
+
   .branch-header h2 {
     border-bottom: 1px solid;
-    padding-bottom: 10px;
     border-width: 1.5px;
   }
 
@@ -198,6 +213,11 @@ export default styled(BranchePraha)`
     border-bottom: 1px solid ${theme.colors.primary};
     border-width: 2.5px;
     padding-bottom: 4px;
+  }
+
+  .branch-body-header p {
+    padding-top: 30px;
+    width: 657px;
   }
 
   .branch-body-title {

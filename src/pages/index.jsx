@@ -231,27 +231,25 @@ const Index = ({
       ></ProductSingleCard>
       <ProductCards></ProductCards>
       <About
-        title={
-          homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis.raw[0]
-            .text
-            ? homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis
-                .raw[0].text
-            : ""
-        }
-        info={
-          homepage.data.oddil[3].sekce_polozka.document[0].data.obsah.raw[0]
-            .text
-            ? homepage.data.oddil[3].sekce_polozka.document[0].data.obsah.raw[0]
-                .text
-            : ""
-        }
-        img={
-          homepage.data.oddil[3].sekce_polozka.document[0].data.foto.localFile
-            .childImageSharp.fixed
-            ? homepage.data.oddil[3].sekce_polozka.document[0].data.foto
-                .localFile.childImageSharp.fixed
-            : ""
-        }
+      // title={
+      //   homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis.raw[0]
+      //     .text
+      //     ? homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis
+      //         .raw[0].text
+      //     : ""
+      // }
+      // info={homepage.data.oddil[3].sekce_polozka.document[0].data.obsah.raw.map(
+      //   (item, index) => {
+      //     return <p key={index}>{item.text}</p>;
+      //   }
+      // )}
+      // img={
+      //   homepage.data.oddil[3].sekce_polozka.document[0].data.foto.localFile
+      //     .childImageSharp.fixed
+      //     ? homepage.data.oddil[3].sekce_polozka.document[0].data.foto
+      //         .localFile.childImageSharp.fixed
+      //     : ""
+      // }
       ></About>
       <BranchPraha />
       <BranchBruno />
