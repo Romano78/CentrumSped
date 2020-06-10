@@ -32,7 +32,7 @@ const Parteneri = ({ className, children }) => {
     }
   `);
   return (
-    <section className={className}>
+    <section className={className} id="parteneri">
       <div className="parteneri-header">
         <h2>{data.parteneri.nodes[0].data.partneri_nadpis.raw[0].text}</h2>
       </div>

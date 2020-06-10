@@ -1,21 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import LocalizedLink from "./LocalizedLink";
-import { useStaticQuery, graphql } from "gatsby";
+// import LocalizedLink from "./LocalizedLink";
+// import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
 
 const StyledHeader = styled.nav`
+  padding-bottom: 30px;
   a {
     display: flex;
     color: ${theme.colors.primary};
-    font-weight: 400;
+    font-weight: 300;
     padding-right: 10px;
-
     font-style: normal;
-    font-family: "Source Sans Pro", -apple-system, "BlinkMacSystemFont",
-      "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "proxima-nova";
   }
 
   .nav-header {
@@ -25,6 +23,7 @@ const StyledHeader = styled.nav`
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.25rem;
+    padding-top: 46px;
   }
 
   .nav-center {
@@ -36,8 +35,8 @@ const StyledHeader = styled.nav`
 
   .nav-link {
     display: flex;
-    padding-right: 50px;
-    padding-top: 4px;
+    padding-right: 45px;
+    padding-top: 32px;
   }
 `;
 

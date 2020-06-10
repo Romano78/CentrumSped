@@ -51,34 +51,41 @@ const ProductCards = ({ className, children }) => {
     <>
       <section className={className}>
         <div className="card-container">
-          {data.allPrismicCards.nodes[0].data.productcards.map(
-            (product, index) => {
-              return (
-                <Fragment key={index}>
-                  <div className="grid-item">
-                    <div className="image">
-                      <BackgroundImage
-                        fixed={
-                          product.cardimage.localFile.childImageSharp.fixed
-                        }
-                        className="background-image"
-                      >
-                        {product.cardtitle.raw[0].text ? (
-                          <h3 onClick={() => toggleInfo(index)}>
-                            {product.cardtitle.raw[0].text}
-                          </h3>
-                        ) : null}
-                      </BackgroundImage>
-                      <div className="card-info">
-                        {showInfo[index] ? (
-                          <p>{product.cardinfo.raw[0].text}</p>
-                        ) : null}
+          {data.allPrismicCards.nodes[0] &&
+          data.allPrismicCards.nodes[0].data.productcards ? (
+            <>
+              {data.allPrismicCards.nodes[0].data.productcards.map(
+                (product, index) => {
+                  return (
+                    <Fragment key={index}>
+                      <div className="grid-item">
+                        <div className="image">
+                          <BackgroundImage
+                            fixed={
+                              product.cardimage.localFile.childImageSharp.fixed
+                            }
+                            className="background-image"
+                          >
+                            {product.cardtitle.raw[0].text ? (
+                              <h3 onClick={() => toggleInfo(index)}>
+                                {product.cardtitle.raw[0].text}
+                              </h3>
+                            ) : null}
+                          </BackgroundImage>
+                          <div className="card-info">
+                            {showInfo[index] ? (
+                              <p>{product.cardinfo.raw[0].text}</p>
+                            ) : null}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </Fragment>
-              );
-            }
+                    </Fragment>
+                  );
+                }
+              )}
+            </>
+          ) : (
+            ""
           )}
         </div>
       </section>
@@ -89,12 +96,13 @@ const ProductCards = ({ className, children }) => {
 
 export default styled(ProductCards)`
   text-align: center;
-  padding: 100px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   .card-container {
     display: inline-grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 79px;
-    grid-row-gap: 90px;
+    grid-column-gap: 136px;
+    grid-row-gap: 194px;
   }
 
   .background-image {

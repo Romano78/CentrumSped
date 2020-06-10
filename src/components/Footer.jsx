@@ -1,33 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
+import { theme } from "../styles";
 
 const StyledFooter = styled.footer`
-  /* max-width: ${(props) => props.theme.maxWidth}; */
   width: 100%;
-  /* margin: 6rem auto 0 auto; */
-  /* padding: 2rem; */
-  background-color: ${(props) => props.theme.colors.primary};
 
   p {
-    text-align: center;
-    color: white;
     margin-bottom: 0px;
+    text-align: center;
+    font-size: 14px;
   }
-
   .footer {
-    height: 150px;
+    height: 205px;
+    background-color: #331a80;
   }
 
   .top-footer {
     height: 50%;
-    background-color: pink;
-    padding-top: 23px;
+    background-color: #f7f6fa;
+    padding-top: 43px;
+    color: ${theme.colors.primary};
   }
 
-  .bottom-footer{
+  .top-footer p {
+    color: ${theme.colors.primary};
+  }
+
+  .bottom-footer {
     height: 50%;
-    padding-top: 10px;
+    padding-top: 14px;
+  }
+
+  .bottom-footer p {
+    color: white;
+    padding-bottom: 22px;
   }
 `;
 
@@ -35,6 +42,6 @@ const Footer = ({ children }) => <StyledFooter>{children}</StyledFooter>;
 
 export default Footer;
 
-Footer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// Footer.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };

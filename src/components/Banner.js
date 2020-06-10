@@ -14,11 +14,10 @@ const Banner = ({ title, info, children, className }) => {
 };
 
 export default styled(Banner)`
-  height: 50%;
   width: 50%;
   position: absolute;
   left: 30px;
-  bottom: -20px;
+  bottom: 5px;
 
   h1 {
     color: white;

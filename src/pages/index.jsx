@@ -14,10 +14,11 @@ import ProductCards from "../components/ProductCards";
 import ProductSingleCard from "../components/ProductSingleCard";
 import About from "../components/About";
 import BranchPraha from "../components/BranchePraha";
-import BranchSlovakia from "../components/BranchSlovakia";
+import BranchBruno from "../components/BranchBruno";
 import Footer from "../components/Footer";
 import BranchNitra from "../components/BranchNitra";
 import Parteneri from "../components/Parteneri";
+import { Link } from "gatsby";
 
 const Hero = styled.header`
   display: flex;
@@ -101,79 +102,131 @@ const Index = ({
       <Header>
         <div className="nav-center">
           <div className="nav-header">
-            <img
-              style={{ width: "550px" }}
-              src={
-                homepage.data.oddil[0].sekce_polozka.document[0].data.logo
-                  .localFile.publicURL
-              }
-            />
+            {homepage.data.oddil[0] &&
+            homepage.data.oddil[0].sekce_polozka.document[0].data.logo.localFile
+              .publicURL ? (
+              <img
+                style={{ width: "550px" }}
+                src={
+                  homepage.data.oddil[0].sekce_polozka.document[0].data.logo
+                    .localFile.publicURL
+                }
+              />
+            ) : (
+              ""
+            )}
           </div>
           <div className="nav-link" invert="true">
-            <a>PRODUKTY</a>
-            <a> O NÁS</a>
-            <a>KALENDÁŘ AKCÍ</a>
-            <a>PARTNEŘI</a>
-            <a>GALERIE</a>
-            <a>KONTAKTY</a>
+            <Link to="#product" activeClassName="active">
+              PRODUKTY
+            </Link>
+            <Link to="#about"> O NÁS</Link>
+            <Link to="#parteneri">PARTNEŘI</Link>
+            <Link>GALERIE</Link>
+            <Link to="#kontakty">KONTAKTY</Link>
           </div>
         </div>
       </Header>
       <StyledHero
         home="true"
-        img={homepage.data.banner_image.localFile.childImageSharp.fluid}
+        img={
+          homepage.data.banner_image.localFile.childImageSharp.fluid
+            ? homepage.data.banner_image.localFile.childImageSharp.fluid
+            : ""
+        }
       >
         <Banner
-          title={homepage.data.title.raw[0].text}
-          info={homepage.data.body_image.raw[0].text}
+          title={
+            homepage.data.title.raw[0].text
+              ? homepage.data.title.raw[0].text
+              : ""
+          }
+          info={
+            homepage.data.body_image.raw[0].text
+              ? homepage.data.body_image.raw[0].text
+              : ""
+          }
         ></Banner>
       </StyledHero>
       <Product
         title={
           homepage.data.oddil[1].sekce_polozka.document[0].data.nadpis.raw[0]
             .text
+            ? homepage.data.oddil[1].sekce_polozka.document[0].data.nadpis
+                .raw[0].text
+            : ""
         }
         description={
           homepage.data.oddil[1].sekce_polozka.document[0].data.obsah.raw[0]
             .text
+            ? homepage.data.oddil[1].sekce_polozka.document[0].data.obsah.raw[0]
+                .text
+            : ""
         }
         img={
           homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
             .childImageSharp.fixed
+            ? homepage.data.oddil[1].sekce_polozka.document[0].data.foto
+                .localFile.childImageSharp.fixed
+            : ""
         }
       ></Product>
       <ProductSingleCard
         title1={
           homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis.raw[0]
             .text
+            ? homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis
+                .raw[0].text
+            : ""
         }
         title2={
           homepage.data.oddil[2].sekce_polozka.document[0].data.nadpis.raw[0]
             .text
+            ? homepage.data.oddil[2].sekce_polozka.document[0].data.nadpis
+                .raw[0].text
+            : ""
         }
         description1={
           homepage.data.oddil[4].sekce_polozka.document[0].data.obsah.raw[0]
             .text
+            ? homepage.data.oddil[4].sekce_polozka.document[0].data.obsah.raw[0]
+                .text
+            : ""
         }
         description2={
           homepage.data.oddil[2].sekce_polozka.document[0].data.obsah.raw[0]
             .text
+            ? homepage.data.oddil[2].sekce_polozka.document[0].data.obsah.raw[0]
+                .text
+            : ""
         }
         img1={
           homepage.data.oddil[4].sekce_polozka.document[0].data.foto.localFile
             .childImageSharp.fixed
+            ? homepage.data.oddil[4].sekce_polozka.document[0].data.foto
+                .localFile.childImageSharp.fixed
+            : ""
         }
         img2={
           homepage.data.oddil[2].sekce_polozka.document[0].data.foto.localFile
             .childImageSharp.fixed
+            ? homepage.data.oddil[2].sekce_polozka.document[0].data.foto
+                .localFile.childImageSharp.fixed
+            : ""
         }
         cardFooterText1={
           homepage.data.oddil[4].sekce_polozka.document[0].data
             .footer_image_text.raw[0].text
+            ? homepage.data.oddil[4].sekce_polozka.document[0].data
+                .footer_image_text.raw[0].text
+            : ""
         }
         cardFooterText2={
           homepage.data.oddil[2].sekce_polozka.document[0].data
             .footer_image_text.raw[0].text
+            ? homepage.data.oddil[2].sekce_polozka.document[0].data
+                .footer_image_text.raw[0].text
+            : ""
         }
       ></ProductSingleCard>
       <ProductCards></ProductCards>
@@ -181,18 +234,27 @@ const Index = ({
         title={
           homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis.raw[0]
             .text
+            ? homepage.data.oddil[3].sekce_polozka.document[0].data.nadpis
+                .raw[0].text
+            : ""
         }
         info={
           homepage.data.oddil[3].sekce_polozka.document[0].data.obsah.raw[0]
             .text
+            ? homepage.data.oddil[3].sekce_polozka.document[0].data.obsah.raw[0]
+                .text
+            : ""
         }
         img={
           homepage.data.oddil[3].sekce_polozka.document[0].data.foto.localFile
             .childImageSharp.fixed
+            ? homepage.data.oddil[3].sekce_polozka.document[0].data.foto
+                .localFile.childImageSharp.fixed
+            : ""
         }
       ></About>
       <BranchPraha />
-      <BranchSlovakia />
+      <BranchBruno />
       <BranchNitra />
       <Parteneri />
       <Footer>

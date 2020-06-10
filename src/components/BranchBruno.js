@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
 import { FaSquareFull } from "react-icons/fa";
 
-const BranchSlovakia = ({ className, children }) => {
+const BranchBruno = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
       branch: allPrismicKontakty {
@@ -71,54 +71,99 @@ const BranchSlovakia = ({ className, children }) => {
   return (
     <section className={className}>
       <div className="branch-body-header">
-        {console.log(data.branch.nodes)}
-        <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
-        <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
+        {data.branch.nodes[1] &&
+        data.branch.nodes[1].data.kontakty_subtitle.raw[0].text ? (
+          <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
+        ) : (
+          ""
+        )}
+        {data.branch.nodes[1] &&
+        data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
+          <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
+        ) : (
+          ""
+        )}
       </div>
       <div className="branch-body-title">
-        <h4>{data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:</h4>
+        {data.branch.nodes[1] &&
+        data.branch.nodes[1].data.kontakty_list_title.raw[0].text ? (
+          <h4>{data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:</h4>
+        ) : (
+          ""
+        )}
       </div>
       <div className="branch-body">
         <div className="branch-body-list">
-          {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
-            return (
-              <ol key={index}>
-                <span>
-                  <FaSquareFull />
-                </span>
-                {item.kontakty_item.raw[0].text}
-              </ol>
-            );
-          })}
+          {data.branch.nodes[1] && data.branch.nodes[1].data.kontakty_list ? (
+            <>
+              {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
+                return (
+                  <ol key={index}>
+                    <span>
+                      <FaSquareFull />
+                    </span>
+                    {item.kontakty_item.raw[0].text}
+                  </ol>
+                );
+              })}
+            </>
+          ) : (
+            ""
+          )}
         </div>
         <div className="branch-body-img">
-          <Img
-            fluid={
-              data.branch.nodes[1].data.kontakty_list[0].kontakty_image
-                .localFile.childImageSharp.fluid
-            }
-          />
+          {data.branch.nodes[1] &&
+          data.branch.nodes[1].data.kontakty_list[0].kontakty_image ? (
+            <Img
+              fluid={
+                data.branch.nodes[1].data.kontakty_list[0].kontakty_image
+                  .localFile.childImageSharp.fluid
+              }
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="branch-footer">
-        <h4>
-          {
-            data.branch.nodes[1].data.kontakt_link.document[0].data
-              .kontakt__title.raw[0].text
-          }
-        </h4>
-        <p>
-          {
-            data.branch.nodes[1].data.kontakt_link.document[0].data
-              .kontakt_adresa.raw[0].text
-          }
-        </p>
-        <p>
-          {
-            data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt_info
-              .raw[0].text
-          }
-        </p>
+        {data.branch.nodes[1] &&
+        data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt__title
+          .raw[0].text ? (
+          <h4>
+            {
+              data.branch.nodes[1].data.kontakt_link.document[0].data
+                .kontakt__title.raw[0].text
+            }
+          </h4>
+        ) : (
+          ""
+        )}
+
+        {data.branch.nodes[1] &&
+        data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt_adresa
+          .raw[0].text ? (
+          <p>
+            {
+              data.branch.nodes[1].data.kontakt_link.document[0].data
+                .kontakt_adresa.raw[0].text
+            }
+          </p>
+        ) : (
+          ""
+        )}
+
+        {data.branch.nodes[1] &&
+        data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt_info
+          .raw[0].text ? (
+          <p>
+            {
+              data.branch.nodes[1].data.kontakt_link.document[0].data
+                .kontakt_info.raw[0].text
+            }
+          </p>
+        ) : (
+          ""
+        )}
       </div>
       <div className="branch-list-border"></div>
       {children}
@@ -126,7 +171,7 @@ const BranchSlovakia = ({ className, children }) => {
   );
 };
 
-export default styled(BranchSlovakia)`
+export default styled(BranchBruno)`
   background-color: ${theme.colors.primary};
 
   .branch-body-header {

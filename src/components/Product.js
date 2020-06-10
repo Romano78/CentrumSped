@@ -5,7 +5,7 @@ import logo from "../images/titleDeco.png";
 
 const Product = ({ className, img, children, title, description }) => {
   return (
-    <div className={className}>
+    <div className={className} id="product">
       <div className="product">
         <h2>{title}</h2>
         <p>{description}</p>
