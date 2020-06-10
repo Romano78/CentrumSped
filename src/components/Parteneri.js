@@ -8,7 +8,7 @@ import logo from "../images/title-logo.svg";
 const Parteneri = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
-      parteneri: allPrismicPartneri {
+      parteneri: allPrismicPartneri(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
           data {
             partneri_nadpis {

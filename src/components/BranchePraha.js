@@ -9,7 +9,7 @@ import logo from "../images/title-logo.svg";
 const BranchePraha = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
-      branch: allPrismicKontakty {
+      branch: allPrismicKontakty(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
           data {
             kontakty_nadpis {

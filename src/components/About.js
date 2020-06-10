@@ -8,7 +8,7 @@ import logo from "../images/onas-logo.svg";
 const About = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
-      about: allPrismicHomepage {
+      about: allPrismicHomepage(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
           data {
             oddil {

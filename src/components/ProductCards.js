@@ -8,7 +8,7 @@ import { Transition } from "react-transition-group";
 const ProductCards = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
-      allPrismicCards {
+      allPrismicCards(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
           data {
             productcards {

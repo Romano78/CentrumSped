@@ -395,6 +395,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     social: allPrismicHeroLinks(filter: { lang: { eq: $locale } }) {
       edges {
         node {

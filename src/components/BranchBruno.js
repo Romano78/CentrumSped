@@ -8,7 +8,7 @@ import { FaSquareFull } from "react-icons/fa";
 const BranchBruno = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
-      branch: allPrismicKontakty {
+      branch: allPrismicKontakty(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
           data {
             kontakty_subtitle {
