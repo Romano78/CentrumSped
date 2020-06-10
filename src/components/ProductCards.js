@@ -51,8 +51,7 @@ const ProductCards = ({ className, children }) => {
     <>
       <section className={className}>
         <div className="card-container">
-          {data.allPrismicCards.nodes[0] &&
-          data.allPrismicCards.nodes[0].data.productcards ? (
+          {data && data.allPrismicCards.nodes[0].data.productcards ? (
             <>
               {data.allPrismicCards.nodes[0].data.productcards.map(
                 (product, index) => {

@@ -80,7 +80,12 @@ const BranchePraha = ({ className, children }) => {
         <span className="title-logo">
           <img src={logo} alt="title-logo" />
         </span>
-        <h2>{data.branch.nodes[2].data.kontakty_nadpis.raw[0].text}</h2>
+        {data.branch.nodes[2] &&
+        data.branch.nodes[2].data.kontakty_nadpis.raw[0].text ? (
+          <h2>{data.branch.nodes[2].data.kontakty_nadpis.raw[0].text}</h2>
+        ) : (
+          ""
+        )}
       </div>
       <div className="branch-body-header">
         {data.branch.nodes[2] &&

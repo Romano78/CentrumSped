@@ -51,30 +51,50 @@ const About = ({ className, children }) => {
       <div className="about">
         <div className="floated">
           <div className="about-image">
-            <Img
-              fixed={
-                data.about.nodes[2].data.oddil[3].sekce_polozka.document[0].data
-                  .foto.localFile.childImageSharp.fixed
-              }
-            />
+            {data.about.nodes[0] &&
+            data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
+              .foto.localFile.childImageSharp.fixed ? (
+              <Img
+                fixed={
+                  data.about.nodes[0].data.oddil[3].sekce_polozka.document[0]
+                    .data.foto.localFile.childImageSharp.fixed
+                }
+              />
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <div className="about-header">
           <span className="title-logo">
             <img src={logo} alt="title-logo" />
           </span>
-          <h2>
-            {
-              data.about.nodes[2].data.oddil[3].sekce_polozka.document[0].data
-                .nadpis.raw[0].text
-            }
-          </h2>
+          {data.about.nodes[0] &&
+          data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
+            .nadpis.raw[0].text ? (
+            <h2>
+              {
+                data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
+                  .nadpis.raw[0].text
+              }
+            </h2>
+          ) : (
+            ""
+          )}
         </div>
         <div className="about-info">
-          {data.about.nodes[2].data.oddil[3].sekce_polozka.document[0].data.obsah.raw.map(
-            (item, index) => {
-              return <p key={index}>{item.text}</p>;
-            }
+          {data.about.nodes[0] &&
+          data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data.obsah
+            .raw ? (
+            <>
+              {data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data.obsah.raw.map(
+                (item, index) => {
+                  return <p key={index}>{item.text}</p>;
+                }
+              )}
+            </>
+          ) : (
+            ""
           )}
         </div>
       </div>
