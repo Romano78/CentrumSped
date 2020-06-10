@@ -96,7 +96,7 @@ const ProductCards = ({ className, children }) => {
 export default styled(ProductCards)`
   text-align: center;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 324px;
   .card-container {
     display: inline-grid;
     grid-template-columns: 1fr 1fr;

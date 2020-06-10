@@ -98,7 +98,7 @@ const Layout = ({ children, pageContext: { locale } }) => {
           <Global styles={globalStyle} />
           <SkipNavLink />
           <LocaleSwitcher data-name="locale-switcher">
-            <Link hrefLang="cs-cz" to="/">
+            <Link hrefLang="en-us" to="/en">
               <ReactCountryFlag
                 countryCode="GB"
                 svg
@@ -108,7 +108,7 @@ const Layout = ({ children, pageContext: { locale } }) => {
                 }}
               />
             </Link>
-            <Link hrefLang="en-us" to="/en">
+            <Link hrefLang="cs-cz" to="/">
               <ReactCountryFlag
                 countryCode="CZ"
                 svg
