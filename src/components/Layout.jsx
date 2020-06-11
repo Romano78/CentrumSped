@@ -39,15 +39,14 @@ const globalStyle = css`
   }
   a {
     color: ${theme.colors.primary};
-    transition: all 0.4s ease-in-out;
     text-decoration: none;
-    font-weight: 700;
-    font-style: italic;
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
+    font-weight: 300;
+    padding-right: 10px;
+    font-style: normal;
+    font-family: "proxima-nova";
+    text-transform: uppercase;
   }
+
   @media (max-width: ${theme.breakpoints.s}) {
     html {
       font-size: 24px !important;

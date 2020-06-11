@@ -5,25 +5,28 @@ import logo from "../images/title-logo.svg";
 
 const Product = ({ className, img, children, title, description }) => {
   return (
-    <div className={className} id="producty">
-      <div className="product">
-        <span className="title-logo">
-          <img src={logo} alt="title-logo" />
-        </span>
-        <h2>{title}</h2>
-        <p>{description}</p>
+    <>
+      <div className={className} id="Produkty">
+        <div className="smooth-scrool"></div>
+        <div className="product">
+          <span className="title-logo">
+            <img src={logo} alt="title-logo" />
+          </span>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
+        <div className="product-image">
+          <Img fixed={img} />
+        </div>
+        {children}
       </div>
-      <div className="product-image">
-        <Img fixed={img} />
-      </div>
-      {children}
-    </div>
+    </>
   );
 };
 
 export default styled(Product)`
   display: flex;
-
+  padding-top: 50px;
   .product {
     margin-left: 145px;
   }

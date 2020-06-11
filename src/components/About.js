@@ -47,59 +47,66 @@ const About = ({ className, children }) => {
     }
   `);
   return (
-    <div className={className} id="about" id="O NÁS">
-      <div className="about">
-        <div className="floated">
-          <div className="about-image">
+    <>
+      <div
+        className="smooth-scrolling"
+        id="o nás"
+        style={{ paddingTop: "70px" }}
+      ></div>
+      <div className={className} id="about">
+        <div className="about">
+          <div className="floated">
+            <div className="about-image">
+              {data.about.nodes[0] &&
+              data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
+                .foto.localFile.childImageSharp.fixed ? (
+                <Img
+                  fixed={
+                    data.about.nodes[0].data.oddil[3].sekce_polozka.document[0]
+                      .data.foto.localFile.childImageSharp.fixed
+                  }
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="about-header">
+            <span className="title-logo">
+              <img src={logo} alt="title-logo" />
+            </span>
             {data.about.nodes[0] &&
             data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
-              .foto.localFile.childImageSharp.fixed ? (
-              <Img
-                fixed={
+              .nadpis.raw[0].text ? (
+              <h2>
+                {
                   data.about.nodes[0].data.oddil[3].sekce_polozka.document[0]
-                    .data.foto.localFile.childImageSharp.fixed
+                    .data.nadpis.raw[0].text
                 }
-              />
+              </h2>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="about-info">
+            {data.about.nodes[0] &&
+            data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
+              .obsah.raw ? (
+              <>
+                {data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data.obsah.raw.map(
+                  (item, index) => {
+                    return <p key={index}>{item.text}</p>;
+                  }
+                )}
+              </>
             ) : (
               ""
             )}
           </div>
         </div>
-        <div className="about-header">
-          <span className="title-logo">
-            <img src={logo} alt="title-logo" />
-          </span>
-          {data.about.nodes[0] &&
-          data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
-            .nadpis.raw[0].text ? (
-            <h2>
-              {
-                data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
-                  .nadpis.raw[0].text
-              }
-            </h2>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="about-info">
-          {data.about.nodes[0] &&
-          data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data.obsah
-            .raw ? (
-            <>
-              {data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data.obsah.raw.map(
-                (item, index) => {
-                  return <p key={index}>{item.text}</p>;
-                }
-              )}
-            </>
-          ) : (
-            ""
-          )}
-        </div>
+        {children}
       </div>
-      {children}
-    </div>
+    </>
   );
 };
 

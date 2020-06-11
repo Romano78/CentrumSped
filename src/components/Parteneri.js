@@ -33,23 +33,33 @@ const Parteneri = ({ className, children }) => {
     }
   `);
   return (
-    <section className={className} id="PARTNEŘI">
-      <div className="parteneri-header">
-        <span className="title-logo">
-          <img src={logo} alt="title-logo" />
-        </span>
-        <h2>{data.parteneri.nodes[0].data.partneri_nadpis.raw[0].text}</h2>
-      </div>
-      <div className="parteneri-img">
-        {data.parteneri.nodes[0].data.partneri_list.map((item, index) => {
-          return (
-            <div key={index} className="parteneri-image-list">
-              <Img fixed={item.partneri_logo.localFile.childImageSharp.fixed} />
-            </div>
-          );
-        })}
-      </div>
-    </section>
+    <>
+      <div
+        className="smooth-scrolling"
+        id="Partneři"
+        styles={{ paddingTop: "30px" }}
+      ></div>
+
+      <section className={className} id="Partneři">
+        <div className="parteneri-header">
+          <span className="title-logo">
+            <img src={logo} alt="title-logo" />
+          </span>
+          <h2>{data.parteneri.nodes[0].data.partneri_nadpis.raw[0].text}</h2>
+        </div>
+        <div className="parteneri-img">
+          {data.parteneri.nodes[0].data.partneri_list.map((item, index) => {
+            return (
+              <div key={index} className="parteneri-image-list">
+                <Img
+                  fixed={item.partneri_logo.localFile.childImageSharp.fixed}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 };
 

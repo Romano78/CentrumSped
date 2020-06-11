@@ -233,9 +233,9 @@ export default styled(BranchBruno)`
   }
 
   .branch-body-img {
+    max-height: 342px;
     position: relative;
     bottom: 39px;
-    height: 348px;
   }
 
   .branch-list-border {

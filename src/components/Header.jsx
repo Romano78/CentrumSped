@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-// import LocalizedLink from "./LocalizedLink";
+import LocalizedLink from "./LocalizedLink";
 // import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
 
 const StyledHeader = styled.nav`
   padding-bottom: 30px;
   a {
-    display: flex;
     color: ${theme.colors.primary};
     font-weight: 300;
     padding-right: 10px;
@@ -31,12 +30,6 @@ const StyledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .nav-link {
-    display: flex;
-    padding-right: 45px;
-    padding-top: 32px;
   }
 `;
 

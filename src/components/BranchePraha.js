@@ -75,116 +75,121 @@ const BranchePraha = ({ className, children }) => {
     }
   `);
   return (
-    <section className={className} id="KONTAKTY">
-      <div className="branch-header">
-        <span className="title-logo">
-          <img src={logo} alt="title-logo" />
-        </span>
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakty_nadpis.raw[0].text ? (
-          <h2>{data.branch.nodes[2].data.kontakty_nadpis.raw[0].text}</h2>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body-header">
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakty_subtitle.raw[0].text ? (
-          <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
-        ) : (
-          ""
-        )}
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakty_obsah.raw[0].text ? (
-          <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body-title">
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakty_list_title.raw[0].text ? (
-          <h4>{data.branch.nodes[2].data.kontakty_list_title.raw[0].text}:</h4>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body">
-        <div className="branch-body-list">
-          {data.branch.nodes[2] && data.branch.nodes[2].data.kontakty_list ? (
-            <>
-              {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
-                return (
-                  <ol key={index}>
-                    <span>
-                      <FaSquareFull />
-                    </span>
-                    {item.kontakty_item.raw[0].text}
-                  </ol>
-                );
-              })}
-            </>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="branch-body-img">
+    <>
+      <div className="smooth-scrolling" id="Kontakty"></div>
+      <section className={className}>
+        <div className="branch-header">
+          <span className="title-logo">
+            <img src={logo} alt="title-logo" />
+          </span>
           {data.branch.nodes[2] &&
-          data.branch.nodes[2].data.kontakty_list[0].kontakty_image ? (
-            <Img
-              fluid={
-                data.branch.nodes[2].data.kontakty_list[0].kontakty_image
-                  .localFile.childImageSharp.fluid
-              }
-            />
+          data.branch.nodes[2].data.kontakty_nadpis.raw[0].text ? (
+            <h2>{data.branch.nodes[2].data.kontakty_nadpis.raw[0].text}</h2>
           ) : (
             ""
           )}
         </div>
-      </div>
-      <div className="branch-footer">
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt__title
-          .raw[0].text ? (
-          <h4>
-            {
-              data.branch.nodes[2].data.kontakt_link.document[0].data
-                .kontakt__title.raw[0].text
-            }
-          </h4>
-        ) : (
-          ""
-        )}
+        <div className="branch-body-header">
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakty_subtitle.raw[0].text ? (
+            <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
+          ) : (
+            ""
+          )}
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakty_obsah.raw[0].text ? (
+            <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="branch-body-title">
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakty_list_title.raw[0].text ? (
+            <h4>
+              {data.branch.nodes[2].data.kontakty_list_title.raw[0].text}:
+            </h4>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="branch-body">
+          <div className="branch-body-list">
+            {data.branch.nodes[2] && data.branch.nodes[2].data.kontakty_list ? (
+              <>
+                {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
+                  return (
+                    <ol key={index}>
+                      <span>
+                        <FaSquareFull />
+                      </span>
+                      {item.kontakty_item.raw[0].text}
+                    </ol>
+                  );
+                })}
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="branch-body-img">
+            {data.branch.nodes[2] &&
+            data.branch.nodes[2].data.kontakty_list[0].kontakty_image ? (
+              <Img
+                fluid={
+                  data.branch.nodes[2].data.kontakty_list[0].kontakty_image
+                    .localFile.childImageSharp.fluid
+                }
+              />
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className="branch-footer">
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt__title
+            .raw[0].text ? (
+            <h4>
+              {
+                data.branch.nodes[2].data.kontakt_link.document[0].data
+                  .kontakt__title.raw[0].text
+              }
+            </h4>
+          ) : (
+            ""
+          )}
 
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_adresa
-          .raw[0].text ? (
-          <p>
-            {
-              data.branch.nodes[2].data.kontakt_link.document[0].data
-                .kontakt_adresa.raw[0].text
-            }
-          </p>
-        ) : (
-          ""
-        )}
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_adresa
+            .raw[0].text ? (
+            <p>
+              {
+                data.branch.nodes[2].data.kontakt_link.document[0].data
+                  .kontakt_adresa.raw[0].text
+              }
+            </p>
+          ) : (
+            ""
+          )}
 
-        {data.branch.nodes[2] &&
-        data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_info
-          .raw[0].text ? (
-          <p>
-            {
-              data.branch.nodes[2].data.kontakt_link.document[0].data
-                .kontakt_info.raw[0].text
-            }
-          </p>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-list-border"></div>
-      {children}
-    </section>
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakt_link.document[0].data.kontakt_info
+            .raw[0].text ? (
+            <p>
+              {
+                data.branch.nodes[2].data.kontakt_link.document[0].data
+                  .kontakt_info.raw[0].text
+              }
+            </p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="branch-list-border"></div>
+        {children}
+      </section>
+    </>
   );
 };
 

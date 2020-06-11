@@ -19,77 +19,7 @@ import Footer from "../components/Footer";
 import BranchNitra from "../components/BranchNitra";
 import Parteneri from "../components/Parteneri";
 import { Link } from "gatsby";
-
-const Hero = styled.header`
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-`;
-
-const HeroInner = styled(Wrapper)`
-  padding-top: 13rem;
-  padding-bottom: 13rem;
-  h1 {
-    margin-bottom: 2rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.l}) {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-`;
-
-const HeroText = styled.div`
-  font-size: 1.7rem;
-  line-height: 1.4;
-  margin-bottom: 2rem;
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    font-size: 1.4rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    font-size: 1.25rem;
-  }
-`;
-
-// const Social = styled.ul`
-//   list-style-type: none;
-//   display: flex;
-//   flex-wrap: wrap;
-//   margin-left: 0;
-//   font-family: "Source Sans Pro", -apple-system, "BlinkMacSystemFont",
-//     "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif, "Apple Color Emoji",
-//     "Segoe UI Emoji", "Segoe UI Symbol";
-//   li {
-//     display: inline;
-//     &:not([data-name="social-entry-0"]) {
-//       margin-left: 2.5rem;
-//       @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-//         margin-left: 1.75rem;
-//       }
-//     }
-//     a {
-//       font-style: normal;
-//       color: ${(props) => props.theme.colors.greyDark};
-//       font-size: 1.333rem;
-//       font-weight: 600;
-//       &:hover,
-//       &:focus {
-//         color: ${(props) => props.theme.colors.primary};
-//         text-decoration: none;
-//       }
-//       @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-//         font-size: 1.2rem;
-//       }
-//     }
-//   }
-// `;
+import ScrollToLink from "../components/Links";
 
 const Index = ({
   data: { homepage, social },
@@ -116,14 +46,8 @@ const Index = ({
               ""
             )}
           </div>
-          <div className="nav-link" invert="true">
-            <Link to="#product" activeClassName="active">
-              PRODUKTY
-            </Link>
-            <Link to="#about"> O NÁS</Link>
-            <Link to="#parteneri">PARTNEŘI</Link>
-            <Link>GALERIE</Link>
-            <Link to="#kontakty">KONTAKTY</Link>
+          <div className="nav-link">
+            <ScrollToLink></ScrollToLink>
           </div>
         </div>
       </Header>
