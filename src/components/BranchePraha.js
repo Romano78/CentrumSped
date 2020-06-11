@@ -255,7 +255,7 @@ export default styled(BranchePraha)`
   .branch-body-img {
     position: relative;
     bottom: 39px;
-    height: 362px;
+    max-height: 314px;
     box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
       0px 4px 4px rgba(0, 0, 0, 0.25);
   }
