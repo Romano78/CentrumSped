@@ -296,20 +296,10 @@ export const pageQuery = graphql`
               ... on PrismicHeader {
                 data {
                   links {
-                    galerie {
-                      id
-                    }
-                    kontakty {
-                      id
-                    }
-                    o_nas {
-                      id
-                    }
-                    partneri {
-                      id
-                    }
                     produkty {
-                      id
+                      raw {
+                        text
+                      }
                     }
                   }
                   logo {
