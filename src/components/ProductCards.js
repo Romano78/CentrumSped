@@ -38,7 +38,7 @@ const ProductCards = ({ className, children }) => {
     }
   `);
 
-  const [showInfo, setInfo] = useState({});
+  const [showInfo, setInfo] = useState(false);
 
   const toggleInfo = (id) => {
     setInfo((prevShowInfo) => ({
@@ -60,18 +60,21 @@ const ProductCards = ({ className, children }) => {
                       <div className="grid-item">
                         <div className="image">
                           <BackgroundImage
+                            onClick={() => toggleInfo(index)}
                             fixed={
                               product.cardimage.localFile.childImageSharp.fixed
                             }
                             className="background-image"
                           >
                             {product.cardtitle.raw[0].text ? (
-                              <h3 onClick={() => toggleInfo(index)}>
-                                {product.cardtitle.raw[0].text}
-                              </h3>
+                              <h3>{product.cardtitle.raw[0].text}</h3>
                             ) : null}
                           </BackgroundImage>
-                          <div className="card-info">
+                          <div
+                            className={
+                              showInfo[index] ? "show-info" : "card-info"
+                            }
+                          >
                             {showInfo[index] ? (
                               <p>{product.cardinfo.raw[0].text}</p>
                             ) : null}
@@ -101,7 +104,7 @@ export default styled(ProductCards)`
     display: inline-grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 136px;
-    grid-row-gap: 194px;
+    grid-row-gap: 100px;
   }
 
   .background-image {
@@ -119,11 +122,22 @@ export default styled(ProductCards)`
     text-align: center;
   }
 
-  .card-info {
+  .show-info {
+    height: 300px;
     width: 100%;
     padding-left: 9px;
     text-align: left;
     max-width: 500px;
+    transition: all 0.4s linear;
+    overflow: hidden;
+  }
+
+  .card-info {
+    list-style-type: none;
+    transition: all 0.4s linear;
+    height: 0;
+    overflow: hidden;
+    padding-left: 9px;
   }
 
   .image:hover {
