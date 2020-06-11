@@ -235,6 +235,7 @@ export default styled(BranchBruno)`
   .branch-body-img {
     position: relative;
     bottom: 39px;
+    height: 348px;
   }
 
   .branch-list-border {

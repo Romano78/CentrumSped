@@ -75,7 +75,7 @@ const BranchePraha = ({ className, children }) => {
     }
   `);
   return (
-    <section className={className} id="kontakty">
+    <section className={className} id="KONTAKTY">
       <div className="branch-header">
         <span className="title-logo">
           <img src={logo} alt="title-logo" />
@@ -208,6 +208,7 @@ export default styled(BranchePraha)`
   .branch-header h2 {
     border-bottom: 1px solid;
     border-width: 1.5px;
+    letter-spacing: 2px;
   }
 
   .branch-body-header {
@@ -254,6 +255,9 @@ export default styled(BranchePraha)`
   .branch-body-img {
     position: relative;
     bottom: 39px;
+    height: 362px;
+    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .branch-list-border {

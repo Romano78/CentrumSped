@@ -5,7 +5,7 @@ import logo from "../images/title-logo.svg";
 
 const Product = ({ className, img, children, title, description }) => {
   return (
-    <div className={className} id="product">
+    <div className={className} id="producty">
       <div className="product">
         <span className="title-logo">
           <img src={logo} alt="title-logo" />
@@ -39,6 +39,7 @@ export default styled(Product)`
 
   .product h2 {
     border-bottom: 1px solid;
+    letter-spacing: 2px;
   }
 
   .gatsby-image-wrapper {

@@ -47,7 +47,7 @@ const About = ({ className, children }) => {
     }
   `);
   return (
-    <div className={className} id="about">
+    <div className={className} id="about" id="O NÁS">
       <div className="about">
         <div className="floated">
           <div className="about-image">
@@ -146,6 +146,8 @@ export default styled(About)`
     left: 21px;
   }
   .about-image {
+    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   .gatsby-image-wrapper {
     vertical-align: middle;

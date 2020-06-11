@@ -221,6 +221,8 @@ export default styled(BranchNitra)`
   .branch-body-img {
     position: relative;
     bottom: 39px;
+    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .branch-list-border {

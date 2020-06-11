@@ -33,7 +33,7 @@ const Parteneri = ({ className, children }) => {
     }
   `);
   return (
-    <section className={className} id="parteneri">
+    <section className={className} id="PARTNEŘI">
       <div className="parteneri-header">
         <span className="title-logo">
           <img src={logo} alt="title-logo" />
@@ -68,6 +68,10 @@ export default styled(Parteneri)`
   .parteneri-header span {
     position: absolute;
     left: 24px;
+  }
+
+  .parteneri-header h2 {
+    letter-spacing: 2px;
   }
 
   .parteneri-img {

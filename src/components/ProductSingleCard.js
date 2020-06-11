@@ -85,6 +85,12 @@ export default styled(ProductSingleCard)`
     width: 800px;
   }
 
+  .card-nitra-text {
+    width: 400px;
+    padding-left: 18px;
+    margin-top: -3px;
+  }
+
   /* bruno-card */
 
   .card-bruno-body {
@@ -114,6 +120,10 @@ export default styled(ProductSingleCard)`
     width: 100%;
     margin-top: 0px;
   }
+  .card-bruno-text p {
+    width: 400px;
+    padding-top: 15px;
+  }
 
   .gatsby-image-wrapper {
     vertical-align: middle;
@@ -122,6 +132,8 @@ export default styled(ProductSingleCard)`
   .card-bruno-image {
     box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
       0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 400px;
+    margin-right: 40px;
   }
 
   .card-bruno-description {
