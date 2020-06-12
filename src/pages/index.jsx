@@ -72,29 +72,7 @@ const Index = ({
           }
         ></Banner>
       </StyledHero>
-      <Product
-        title={
-          homepage.data.oddil[1].sekce_polozka.document[0].data.nadpis.raw[0]
-            .text
-            ? homepage.data.oddil[1].sekce_polozka.document[0].data.nadpis
-                .raw[0].text
-            : ""
-        }
-        description={
-          homepage.data.oddil[1].sekce_polozka.document[0].data.obsah.raw[0]
-            .text
-            ? homepage.data.oddil[1].sekce_polozka.document[0].data.obsah.raw[0]
-                .text
-            : ""
-        }
-        img={
-          homepage.data.oddil[1].sekce_polozka.document[0].data.foto.localFile
-            .childImageSharp.fixed
-            ? homepage.data.oddil[1].sekce_polozka.document[0].data.foto
-                .localFile.childImageSharp.fixed
-            : ""
-        }
-      ></Product>
+      <Product></Product>
       <ProductSingleCard
         title1={
           homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis.raw[0]
