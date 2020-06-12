@@ -11,7 +11,8 @@ import Banner from "../components/Banner";
 import StyledHero from "../components/StyledHero";
 import Product from "../components/Product";
 import ProductCards from "../components/ProductCards";
-import ProductSingleCard from "../components/ProductSingleCard";
+import ProductCardNitra from "../components/ProductCardNitra";
+import ProductCardBruno from "../components/ProductCardBruno";
 import About from "../components/About";
 import BranchPraha from "../components/BranchePraha";
 import BranchBruno from "../components/BranchBruno";
@@ -73,64 +74,8 @@ const Index = ({
         ></Banner>
       </StyledHero>
       <Product></Product>
-      <ProductSingleCard
-        title1={
-          homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis.raw[0]
-            .text
-            ? homepage.data.oddil[4].sekce_polozka.document[0].data.nadpis
-                .raw[0].text
-            : ""
-        }
-        title2={
-          homepage.data.oddil[2].sekce_polozka.document[0].data.nadpis.raw[0]
-            .text
-            ? homepage.data.oddil[2].sekce_polozka.document[0].data.nadpis
-                .raw[0].text
-            : ""
-        }
-        description1={
-          homepage.data.oddil[4].sekce_polozka.document[0].data.obsah.raw[0]
-            .text
-            ? homepage.data.oddil[4].sekce_polozka.document[0].data.obsah.raw[0]
-                .text
-            : ""
-        }
-        description2={
-          homepage.data.oddil[2].sekce_polozka.document[0].data.obsah.raw[0]
-            .text
-            ? homepage.data.oddil[2].sekce_polozka.document[0].data.obsah.raw[0]
-                .text
-            : ""
-        }
-        img1={
-          homepage.data.oddil[4].sekce_polozka.document[0].data.foto.localFile
-            .childImageSharp.fixed
-            ? homepage.data.oddil[4].sekce_polozka.document[0].data.foto
-                .localFile.childImageSharp.fixed
-            : ""
-        }
-        img2={
-          homepage.data.oddil[2].sekce_polozka.document[0].data.foto.localFile
-            .childImageSharp.fixed
-            ? homepage.data.oddil[2].sekce_polozka.document[0].data.foto
-                .localFile.childImageSharp.fixed
-            : ""
-        }
-        cardFooterText1={
-          homepage.data.oddil[4].sekce_polozka.document[0].data
-            .footer_image_text.raw[0].text
-            ? homepage.data.oddil[4].sekce_polozka.document[0].data
-                .footer_image_text.raw[0].text
-            : ""
-        }
-        cardFooterText2={
-          homepage.data.oddil[2].sekce_polozka.document[0].data
-            .footer_image_text.raw[0].text
-            ? homepage.data.oddil[2].sekce_polozka.document[0].data
-                .footer_image_text.raw[0].text
-            : ""
-        }
-      ></ProductSingleCard>
+      <ProductCardNitra></ProductCardNitra>
+      <ProductCardBruno></ProductCardBruno>
       <ProductCards></ProductCards>
       <About
       // title={

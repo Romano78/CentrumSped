@@ -73,10 +73,6 @@ const Product = ({ className, img, children, title, description }) => {
                 .foto.localFile.childImageSharp.fluid
             }
           />
-          {console.log(
-            data.product.nodes[0].data.oddil[1].sekce_polozka.document[0].data
-              .foto.localFile.childImageSharp.fluid
-          )}
         </div>
         {children}
       </div>
@@ -109,6 +105,7 @@ export default styled(Product)`
     border-bottom: 1px solid;
     border-width: 5px;
     letter-spacing: 2px;
+    padding-bottom: 16px;
   }
 
   .gatsby-image-wrapper {
