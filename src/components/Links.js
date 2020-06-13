@@ -54,7 +54,7 @@ const ScrollToLink = ({ className, props }) => {
 };
 
 export default styled(ScrollToLink)`
-  .nav-header {
+  /* .nav-header {
     max-width: 1170px;
     height: 110px;
     display: flex;
@@ -92,5 +92,5 @@ export default styled(ScrollToLink)`
     background-size: 48% 2px;
     margin-bottom: 10px;
     text-decoration: none;
-  }
+  } */
 `;

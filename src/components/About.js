@@ -167,6 +167,8 @@ export default styled(About)`
     .about-image {
       width: 911px;
       margin: 0 auto;
+      box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+        0px 4px 4px rgba(0, 0, 0, 0.25);
     }
   }
 `;

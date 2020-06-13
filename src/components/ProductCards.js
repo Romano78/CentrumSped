@@ -118,12 +118,15 @@ export default styled(ProductCards)`
 
   .background-image {
     opacity: 1 !important;
-    border-width: 6px;
-    height: 234px;
+
+    height: 325px;
     background: rgba(255, 255, 255, 0.5);
+  }
+
+  .background-image:hover {
+    border-width: 6px;
     border-bottom: 1px solid ${theme.colors.primary};
     border-width: 6px;
-    height: 325px;
   }
 
   .background-image h2 {

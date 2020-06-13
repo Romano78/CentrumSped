@@ -173,6 +173,11 @@ export default styled(ProductCardBruno)`
     margin-top: 50px;
   }
 
+  .gatsby-image-wrapper {
+    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+      0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
   @media (min-width: 993px) {
     .card-bruno-image {
       display: inline !important;

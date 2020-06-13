@@ -15,7 +15,7 @@ const StyledHeader = styled.nav`
     font-family: "proxima-nova";
   }
 
-  .nav-header {
+  /* .nav-header {
     max-width: 1170px;
     height: 110px;
     display: flex;
@@ -30,7 +30,7 @@ const StyledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } */
 `;
 
 const Header = ({ invert, children }) => (
