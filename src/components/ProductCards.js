@@ -154,6 +154,9 @@ export default styled(ProductCards)`
   }
 
   @media (min-width: 993px) {
+    .card {
+      padding: 20px;
+    }
     .card-container {
       display: inline-grid;
       grid-template-columns: 1fr 1fr;
