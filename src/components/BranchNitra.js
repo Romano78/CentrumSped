@@ -72,9 +72,9 @@ const BranchePraha = ({ className, children }) => {
       <div className="smooth-scrolling" id="Kontakty"></div>
       <section className={className}>
         <div className="branch-body-header">
-          {data.branch.nodes[2] &&
-          data.branch.nodes[2].data.kontakty_subtitle.raw[0].text ? (
-            <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
+          {data.branch.nodes[0] &&
+          data.branch.nodes[0].data.kontakty_subtitle.raw[0].text ? (
+            <h4>{data.branch.nodes[0].data.kontakty_subtitle.raw[0].text}</h4>
           ) : (
             ""
           )}
@@ -102,7 +102,7 @@ const BranchePraha = ({ className, children }) => {
                 {data.branch.nodes[0].data.kontakty_list.map((item, index) => {
                   return (
                     <ol key={index}>
-                      <span class="branch-list-logo">
+                      <span className="branch-list-logo">
                         <FaSquareFull />
                       </span>
                       {item.kontakty_item.raw[0].text}
@@ -160,23 +160,9 @@ const BranchePraha = ({ className, children }) => {
 export default styled(BranchePraha)`
   text-align: center;
 
-  .branch-header {
-    text-transform: uppercase;
-    text-align: center;
+  .branch-body-header {
     margin-top: 50px;
   }
-
-  .branch-header h2 {
-    border-bottom: 1px solid;
-    border-width: 5px;
-    letter-spacing: 2px;
-    padding-bottom: 10px;
-  }
-
-  .branch-header span {
-    display: none;
-  }
-
   .branch-body-header {
     margin-left: 0px;
   }

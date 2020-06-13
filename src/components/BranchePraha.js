@@ -113,7 +113,7 @@ const BranchePraha = ({ className, children }) => {
                 {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
                   return (
                     <ol key={index}>
-                      <span class="branch-list-logo">
+                      <span className="branch-list-logo">
                         <FaSquareFull />
                       </span>
                       {item.kontakty_item.raw[0].text}
