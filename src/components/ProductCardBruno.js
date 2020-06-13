@@ -57,49 +57,79 @@ const ProductCardBruno = ({ className, children }) => {
           <div className="card-bruno-body">
             <div className="hide-in-mobile-view">
               <div className="card-bruno-title">
-                <h3>
-                  {
-                    data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
-                      .document[0].data.nadpis.raw[0].text
-                  }
-                </h3>
+                {data.singleProduct.nodes[0] &&
+                data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                  .document[0].data.nadpis.raw[0].text ? (
+                  <h3>
+                    {
+                      data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                        .document[0].data.nadpis.raw[0].text
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="card-bruno-description">
-                <p>
-                  {
-                    data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
-                      .document[0].data.obsah.raw[0].text
-                  }
-                </p>
+                {data.singleProduct.nodes[0] &&
+                data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                  .document[0].data.obsah.raw[0].text ? (
+                  <p>
+                    {
+                      data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                        .document[0].data.obsah.raw[0].text
+                    }
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
           <div className="card-bruno-image-container">
             <div className="card-bruno-image">
-              <Img
-                fluid={
-                  data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
-                    .document[0].data.foto.localFile.childImageSharp.fluid
-                }
-                objectFit="cover"
-              />
+              {data.singleProduct.nodes[0] &&
+              data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                .document[0].data.foto.localFile.childImageSharp.fluid ? (
+                <Img
+                  fluid={
+                    data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                      .document[0].data.foto.localFile.childImageSharp.fluid
+                  }
+                  objectFit="cover"
+                />
+              ) : (
+                ""
+              )}
             </div>
             <div className="hide-in-desktop-view">
               <div className="card-bruno-title">
-                <h3>
-                  {
-                    data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
-                      .document[0].data.nadpis.raw[0].text
-                  }
-                </h3>
+                {data.singleProduct.nodes[0] &&
+                data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                  .document[0].data.nadpis.raw[0].text ? (
+                  <h3>
+                    {
+                      data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                        .document[0].data.nadpis.raw[0].text
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="card-bruno-description">
-                <p>
-                  {
-                    data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
-                      .document[0].data.obsah.raw[0].text
-                  }
-                </p>
+                {data.singleProduct.nodes[0] &&
+                data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                  .document[0].data.obsah.raw[0].text ? (
+                  <p>
+                    {
+                      data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
+                        .document[0].data.obsah.raw[0].text
+                    }
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div className="card-bruno-text">
@@ -131,16 +161,16 @@ export default styled(ProductCardBruno)`
   flex-direction: row-reverse;
   text-align: center;
 
-  .card-bruno-title {
-    margin-top: 50px;
-  }
-
   .hide-in-desktop-view {
     display: inline;
   }
 
   .hide-in-mobile-view {
     display: none;
+  }
+
+  .card-bruno-title {
+    margin-top: 50px;
   }
 
   @media (min-width: 993px) {
@@ -175,7 +205,7 @@ export default styled(ProductCardBruno)`
       display: grid;
       grid-template-columns: 2fr 1fr;
       padding: 32px;
-      max-width: 1131px;
+      /* max-width: 1131px; */
     }
 
     .card-bruno-body {

@@ -162,12 +162,11 @@ export default styled(ProductCardNitra)`
       grid-template-columns: 1fr 2fr;
       margin-top: 100px;
       padding: 32px;
-      max-width: 1131px;
+      /* max-width: 1131px; */
     }
 
     .card-nitra-body {
       padding-top: 10px;
-      padding-left: 10px;
     }
     .card-nitra-image p {
       padding-left: 15px;
@@ -180,7 +179,7 @@ export default styled(ProductCardNitra)`
 
     .card-nitra-body p {
       text-align: left;
-      margin-right: 154px;
+      /* margin-right: 154px; */
       word-break: break-all;
     }
   }
