@@ -145,16 +145,29 @@ const BranchePraha = ({ className, children }) => {
                 className="image"
               >
                 <div className="image-banner">
-                  <h4>
-                    {data.branch.nodes[2].data.kontakt_napsah.raw[0].text}
-                  </h4>
-                  <div>
-                    {data.branch.nodes[2].data.kontakt_info.map(
-                      (item, index) => {
-                        return <p>{item.kontakt_obsah.raw[0].text}</p>;
-                      }
-                    )}
-                  </div>
+                  {data.branch.nodes[2] &&
+                  data.branch.nodes[2].data.kontakt_napsah.raw[0].text ? (
+                    <h4>
+                      {data.branch.nodes[2].data.kontakt_napsah.raw[0].text}
+                    </h4>
+                  ) : (
+                    ""
+                  )}
+
+                  {data.branch.nodes[2] &&
+                  data.branch.nodes[2].data.kontakt_info ? (
+                    <>
+                      <div>
+                        {data.branch.nodes[2].data.kontakt_info.map(
+                          (item, index) => {
+                            return <p>{item.kontakt_obsah.raw[0].text}</p>;
+                          }
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </BackgroundImage>
             ) : (
