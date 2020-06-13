@@ -69,7 +69,7 @@ const ProductCards = ({ className, children }) => {
                               className="background-image"
                             >
                               {product.cardtitle.raw[0].text ? (
-                                <h3>{product.cardtitle.raw[0].text}</h3>
+                                <h2>{product.cardtitle.raw[0].text}</h2>
                               ) : null}
                             </BackgroundImage>
                             <div
@@ -126,14 +126,14 @@ export default styled(ProductCards)`
     height: 325px;
   }
 
-  .background-image h3 {
+  .background-image h2 {
     position: relative;
     top: 45%;
     text-align: center;
   }
 
   .show-info {
-    height: 300px;
+    height: 100px;
     width: 100%;
     padding-left: 9px;
     text-align: left;

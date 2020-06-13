@@ -54,13 +54,16 @@ const globalStyle = css`
   }
   @media (max-width: ${theme.breakpoints.s}) {
     h1 {
-      font-size: 1rem !important;
+      font-size: 36px !important;
+    }
+    p {
+      font-size: 14px !important;
     }
     h2 {
-      font-size: 1.777rem !important;
+      font-size: 24px !important;
     }
     h3 {
-      font-size: 1.333rem !important;
+      font-size: 18px !important;
     }
     h4 {
       font-size: 1rem !important;

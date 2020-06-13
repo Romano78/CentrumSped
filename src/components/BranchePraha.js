@@ -198,7 +198,7 @@ export default styled(BranchePraha)`
     margin-left: 145px;
     text-transform: uppercase;
     padding-bottom: 45px;
-    margin-top: 150px;
+    margin-top: 410px;
   }
 
   .branch-header span {

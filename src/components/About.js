@@ -30,8 +30,8 @@ const About = ({ className, children }) => {
                       foto {
                         localFile {
                           childImageSharp {
-                            fixed(width: 866, height: 574) {
-                              ...GatsbyImageSharpFixed
+                            fluid {
+                              ...GatsbyImageSharpFluid
                             }
                           }
                         }
@@ -55,22 +55,6 @@ const About = ({ className, children }) => {
       ></div>
       <div className={className} id="about">
         <div className="about">
-          <div className="floated">
-            <div className="about-image">
-              {data.about.nodes[0] &&
-              data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
-                .foto.localFile.childImageSharp.fixed ? (
-                <Img
-                  fixed={
-                    data.about.nodes[0].data.oddil[3].sekce_polozka.document[0]
-                      .data.foto.localFile.childImageSharp.fixed
-                  }
-                />
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
           <div className="about-header">
             <span className="title-logo">
               <img src={logo} alt="title-logo" />
@@ -103,7 +87,22 @@ const About = ({ className, children }) => {
               ""
             )}
           </div>
+          <div className="about-image">
+            {data.about.nodes[0] &&
+            data.about.nodes[0].data.oddil[3].sekce_polozka.document[0].data
+              .foto.localFile.childImageSharp.fluid ? (
+              <Img
+                fluid={
+                  data.about.nodes[0].data.oddil[3].sekce_polozka.document[0]
+                    .data.foto.localFile.childImageSharp.fluid
+                }
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
+
         {children}
       </div>
     </>
@@ -111,52 +110,63 @@ const About = ({ className, children }) => {
 };
 
 export default styled(About)`
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 50px;
+
   .about {
+    text-align: center;
     background-color: ${theme.colors.primary};
-    width: 100%;
-    height: 874px;
-    margin-top: 20px;
+    width: 100vw;
   }
-
-  .floated {
-    float: right;
-    width: 816px;
-    height: 574px;
-    position: relative;
-    bottom: 52px;
-    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
-      0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
   .about h2 {
-    margin-left: 145px;
     padding-top: 50px;
-
     border-bottom: 1px solid;
+    border-width: 5px;
     color: white;
-  }
-  .title-logo {
-    padding-top: 51px;
+    padding-bottom: 10px;
   }
 
-  .about-info {
-    max-width: 1440px;
-  }
   .about-info p {
     color: white;
-    font-size: 24px;
-    padding-left: 24px;
   }
 
   .about-header span {
-    position: absolute;
-    left: 21px;
+    display: none;
   }
-  .about-image {
-    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
-      0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  .gatsby-image-wrapper {
-    vertical-align: middle;
+
+  @media (min-width: 993px) {
+    .about {
+      width: 100%;
+      height: 874px;
+      margin-top: 20px;
+    }
+
+    .about h2 {
+      margin-left: 145px;
+      border-bottom: 1px solid;
+      text-align: left;
+      padding-bottom: 0px;
+    }
+
+    .about-header span {
+      display: inline;
+      position: absolute;
+      left: 21px;
+      padding-top: 53px;
+    }
+
+    .about-info {
+      max-width: 1133px;
+      margin: 0 auto;
+    }
+    .about-info p {
+      font-size: 24px;
+    }
+
+    .about-image {
+      width: 911px;
+      margin: 0 auto;
+    }
   }
 `;

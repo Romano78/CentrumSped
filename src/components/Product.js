@@ -91,6 +91,7 @@ export default styled(Product)`
   .product p {
     width: 100vw;
     text-align: left;
+    font-size: 14px;
   }
 
   .product span {
