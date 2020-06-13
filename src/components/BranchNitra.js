@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Img from "gatsby-image/withIEPolyfill";
+import BackgroundImage from "gatsby-background-image";
+
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
 import { FaSquareFull } from "react-icons/fa";
+import logo from "../images/title-logo.svg";
 
-const BranchNitra = ({ className, children }) => {
+const BranchePraha = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
       branch: allPrismicKontakty(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
+          lang
           data {
+            kontakty_list_title {
+              raw {
+                text
+              }
+            }
             kontakty_nadpis {
               raw {
                 text
@@ -22,6 +30,18 @@ const BranchNitra = ({ className, children }) => {
               }
             }
             kontakty_subtitle {
+              raw {
+                text
+              }
+            }
+            kontakt_info {
+              kontakt_obsah {
+                raw {
+                  text
+                }
+              }
+            }
+            kontakt_napsah {
               raw {
                 text
               }
@@ -42,195 +62,238 @@ const BranchNitra = ({ className, children }) => {
                 }
               }
             }
-            kontakty_list_title {
-              raw {
-                text
-              }
-            }
-            kontakt_link {
-              document {
-                data {
-                  kontakt__title {
-                    raw {
-                      text
-                    }
-                  }
-                  kontakt_adresa {
-                    raw {
-                      text
-                    }
-                  }
-                  kontakt_info {
-                    raw {
-                      text
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
     }
   `);
   return (
-    <section className={className}>
-      <div className="branch-body-header">
-        {data.branch.nodes[0] &&
-        data.branch.nodes[0].data.kontakty_subtitle.raw[0].text ? (
-          <h4>{data.branch.nodes[0].data.kontakty_subtitle.raw[0].text}</h4>
-        ) : (
-          ""
-        )}
-        {data.branch.nodes[0] &&
-        data.branch.nodes[0].data.kontakty_obsah.raw[0].text ? (
-          <p>{data.branch.nodes[0].data.kontakty_obsah.raw[0].text}</p>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body-title">
-        {data.branch.nodes[0] &&
-        data.branch.nodes[0].data.kontakty_list_title.raw[0].text ? (
-          <h4>{data.branch.nodes[0].data.kontakty_list_title.raw[0].text}:</h4>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body">
-        <div className="branch-body-list">
-          {data.branch.nodes[0] && data.branch.nodes[0].data.kontakty_list ? (
-            <>
-              {data.branch.nodes[0].data.kontakty_list.map((item, index) => {
-                return (
-                  <ol key={index}>
-                    <span>
-                      <FaSquareFull />
-                    </span>
-                    {item.kontakty_item.raw[0].text}
-                  </ol>
-                );
-              })}
-            </>
+    <>
+      <div className="smooth-scrolling" id="Kontakty"></div>
+      <section className={className}>
+        <div className="branch-body-header">
+          {data.branch.nodes[2] &&
+          data.branch.nodes[2].data.kontakty_subtitle.raw[0].text ? (
+            <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
           ) : (
             ""
           )}
-        </div>
-        <div className="branch-body-img">
           {data.branch.nodes[0] &&
-          data.branch.nodes[0].data.kontakty_list[0].kontakty_image ? (
-            <Img
-              fluid={
-                data.branch.nodes[0].data.kontakty_list[0].kontakty_image
-                  .localFile.childImageSharp.fluid
-              }
-            />
+          data.branch.nodes[0].data.kontakty_obsah.raw[0].text ? (
+            <p>{data.branch.nodes[0].data.kontakty_obsah.raw[0].text}</p>
           ) : (
             ""
           )}
         </div>
-      </div>
-      <div className="branch-footer">
-        {data.branch.nodes[0] &&
-        data.branch.nodes[0].data.kontakt_link.document[0].data.kontakt__title
-          .raw[0].text ? (
-          <h4>
-            {
-              data.branch.nodes[0].data.kontakt_link.document[0].data
-                .kontakt__title.raw[0].text
-            }
-          </h4>
-        ) : (
-          ""
-        )}
-
-        {data.branch.nodes[0] &&
-        data.branch.nodes[0].data.kontakt_link.document[0].data.kontakt_adresa
-          .raw[0].text ? (
-          <p>
-            {
-              data.branch.nodes[0].data.kontakt_link.document[0].data
-                .kontakt_adresa.raw[0].text
-            }
-          </p>
-        ) : (
-          ""
-        )}
-
-        {data.branch.nodes[0] &&
-        data.branch.nodes[0].data.kontakt_link.document[0].data.kontakt_info
-          .raw[0].text ? (
-          <p>
-            {
-              data.branch.nodes[0].data.kontakt_link.document[0].data
-                .kontakt_info.raw[0].text
-            }
-          </p>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-list-border"></div>
-      {children}
-    </section>
+        <div className="branch-body">
+          <div className="branch-body-list">
+            <div className="branch-body-title">
+              {data.branch.nodes[0] &&
+              data.branch.nodes[0].data.kontakty_list_title.raw[0].text ? (
+                <h4>
+                  {data.branch.nodes[0].data.kontakty_list_title.raw[0].text}:
+                </h4>
+              ) : (
+                ""
+              )}
+            </div>
+            {data.branch.nodes[0] && data.branch.nodes[0].data.kontakty_list ? (
+              <>
+                {data.branch.nodes[0].data.kontakty_list.map((item, index) => {
+                  return (
+                    <ol key={index}>
+                      <span class="branch-list-logo">
+                        <FaSquareFull />
+                      </span>
+                      {item.kontakty_item.raw[0].text}
+                    </ol>
+                  );
+                })}
+              </>
+            ) : (
+              ""
+            )}
+            <div className="branch-footer">
+              <h4>{data.branch.nodes[0].data.kontakt_napsah.raw[0].text}</h4>
+              <div>
+                {data.branch.nodes[0].data.kontakt_info.map((item, index) => {
+                  return <p>{item.kontakt_obsah.raw[0].text}</p>;
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="branch-body-img">
+            {data.branch.nodes[0] &&
+            data.branch.nodes[0].data.kontakty_list[0].kontakty_image ? (
+              <BackgroundImage
+                fluid={
+                  data.branch.nodes[0].data.kontakty_list[0].kontakty_image
+                    .localFile.childImageSharp.fluid
+                }
+                imgStyle={{ objectFit: "contain" }}
+                className="image"
+              >
+                <div className="image-banner">
+                  <h4>
+                    {data.branch.nodes[0].data.kontakt_napsah.raw[0].text}
+                  </h4>
+                  <div>
+                    {data.branch.nodes[0].data.kontakt_info.map(
+                      (item, index) => {
+                        return <p>{item.kontakt_obsah.raw[0].text}</p>;
+                      }
+                    )}
+                  </div>
+                </div>
+              </BackgroundImage>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        {children}
+      </section>
+    </>
   );
 };
 
-export default styled(BranchNitra)`
-  .branch-body-header {
-    margin-left: 200px;
-    padding-top: 30px;
+export default styled(BranchePraha)`
+  text-align: center;
+
+  .branch-header {
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 50px;
   }
 
-  .branch-body-header h4 {
-    border-bottom: 1px solid ${theme.colors.primary};
-    border-width: 2.5px;
-    padding-bottom: 4px;
-    padding-top: 30x;
+  .branch-header h2 {
+    border-bottom: 1px solid;
+    border-width: 5px;
+    letter-spacing: 2px;
+    padding-bottom: 10px;
   }
-  .branch-body-header p {
-    width: 657px;
+
+  .branch-header span {
+    display: none;
+  }
+
+  .branch-body-header {
+    margin-left: 0px;
   }
 
   .branch-body-title {
-    margin-left: 200px;
+    margin-left: 0px;
+    text-align: left;
   }
 
   .branch-body-list {
-    margin-right: 36px;
+    text-align: left;
     color: ${theme.colors.primary};
   }
 
-  .branch-body-list span {
-    padding-right: 4px;
-    color: ${theme.colors.primary};
-    font-size: 12px;
+  .image {
+    width: 100%;
+    height: 411px;
+    background-position: center;
+    background-size: cover;
+    opacity: 1 !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   }
 
-  .branch-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-left: 200px;
+  .image-banner {
+    width: 336px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 39px;
+  }
+
+  .image-banner h4 {
+    color: white;
+    border-bottom: 1px solid;
+    border-width: 3px;
+    padding-bottom: 10px;
+  }
+
+  .image-banner p {
+    color: white;
+    font-size: 24px !important;
+  }
+
+  .branch-list-logo {
+    padding-right: 5px;
+    font-size: 10px;
+  }
+
+  .branch-body-list {
+    margin-left: 18px;
+  }
+
+  .branch-list-logo {
+    font-size: 19px;
+  }
+
+  .branch-body-list ol {
+    margin-left: 0;
   }
 
   .branch-footer {
-    margin-left: 200px;
-    width: 300px;
+    display: none;
   }
 
-  .branch-body-img {
-    position: relative;
-    bottom: 39px;
-    max-height: 314px;
-    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
-      0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+  @media (min-width: 993px) {
+    .branch-body-header {
+      margin-left: 200px;
+      text-align: left;
+      margin-top: 50px;
+    }
 
-  .branch-list-border {
-    border: 1px solid ${theme.colors.primary};
-    width: 247px;
-    position: relative;
-    bottom: 281px;
-    left: 194px;
+    .branch-body-header h4 {
+      border-bottom: 1px solid;
+    }
+
+    .branch-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .image {
+      width: 100%;
+      height: 402px;
+      background-position: center;
+      background-size: cover;
+      opacity: 1 !important;
+      box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+
+    .image-banner {
+      display: none;
+    }
+
+    .branch-body-list {
+      margin-left: 200px;
+    }
+
+    .branch-list-logo {
+      padding-right: 5px;
+      font-size: 10px;
+    }
+
+    .branch-body-list ol {
+      font-size: 18px;
+      margin-left: 0;
+    }
+
+    .branch-footer {
+      width: 276px;
+      display: block;
+    }
+
+    .branch-footer h4 {
+      border-top: 1px solid;
+      padding-top: 10px;
+      border-width: 4px;
+    }
   }
 `;

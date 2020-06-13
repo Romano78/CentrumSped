@@ -142,6 +142,10 @@ export default styled(ProductCardNitra)`
       display: inline !important;
     }
 
+    .card-nitra-title {
+      margin-top: 0px;
+    }
+
     .card-nitra-text-mobile {
       display: none;
     }

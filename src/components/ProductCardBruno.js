@@ -191,6 +191,10 @@ export default styled(ProductCardBruno)`
       display: inline;
     }
 
+    .card-bruno-title {
+      margin-top: 0px;
+    }
+
     .card-bruno-text {
       display: inline;
       text-align: right;

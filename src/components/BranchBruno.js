@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Img from "gatsby-image/withIEPolyfill";
+import BackgroundImage from "gatsby-background-image";
+
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
 import { FaSquareFull } from "react-icons/fa";
+import logo from "../images/title-logo.svg";
 
-const BranchBruno = ({ className, children }) => {
+const BranchePraha = ({ className, children }) => {
   const data = useStaticQuery(graphql`
     {
       branch: allPrismicKontakty(filter: { lang: { eq: "cs-cz" } }) {
         nodes {
+          lang
           data {
-            kontakty_subtitle {
+            kontakty_list_title {
+              raw {
+                text
+              }
+            }
+            kontakty_nadpis {
               raw {
                 text
               }
@@ -21,43 +29,34 @@ const BranchBruno = ({ className, children }) => {
                 text
               }
             }
-            kontakty_list_title {
+            kontakty_subtitle {
               raw {
                 text
               }
             }
-            kontakty_list {
-              kontakty_image {
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
-              }
-              kontakty_item {
+            kontakt_info {
+              kontakt_obsah {
                 raw {
                   text
                 }
               }
             }
-            kontakt_link {
-              document {
-                data {
-                  kontakt__title {
-                    raw {
-                      text
-                    }
-                  }
-                  kontakt_adresa {
-                    raw {
-                      text
-                    }
-                  }
-                  kontakt_info {
-                    raw {
-                      text
+            kontakt_napsah {
+              raw {
+                text
+              }
+            }
+            kontakty_list {
+              kontakty_item {
+                raw {
+                  text
+                }
+              }
+              kontakty_image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -69,126 +68,110 @@ const BranchBruno = ({ className, children }) => {
     }
   `);
   return (
-    <section className={className}>
-      <div className="branch-body-header">
-        {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakty_subtitle.raw[0].text ? (
-          <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
-        ) : (
-          ""
-        )}
-        {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
-          <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body-title">
-        {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakty_list_title ? (
-          <h4>{data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:</h4>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-body">
-        <div className="branch-body-list">
-          {data.branch.nodes[1] && data.branch.nodes[1].data.kontakty_list ? (
-            <>
-              {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
-                return (
-                  <ol key={index}>
-                    <span>
-                      <FaSquareFull />
-                    </span>
-                    {item.kontakty_item.raw[0].text}
-                  </ol>
-                );
-              })}
-            </>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="branch-body-img">
+    <>
+      <div className="smooth-scrolling" id="Kontakty"></div>
+
+      <section className={className}>
+        <div className="branch-body-header">
           {data.branch.nodes[1] &&
-          data.branch.nodes[1].data.kontakty_list[0].kontakty_image ? (
-            <Img
-              fluid={
-                data.branch.nodes[1].data.kontakty_list[0].kontakty_image
-                  .localFile.childImageSharp.fluid
-              }
-            />
+          data.branch.nodes[1].data.kontakty_subtitle.raw[0].text ? (
+            <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
+          ) : (
+            ""
+          )}
+          {data.branch.nodes[1] &&
+          data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
+            <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
           ) : (
             ""
           )}
         </div>
-      </div>
-      <div className="branch-footer">
-        {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt__title
-          .raw[0].text ? (
-          <h4>
-            {
-              data.branch.nodes[1].data.kontakt_link.document[0].data
-                .kontakt__title.raw[0].text
-            }
-          </h4>
-        ) : (
-          ""
-        )}
+        <div className="branch-body">
+          <div className="branch-body-list">
+            <div className="branch-body-title">
+              {data.branch.nodes[1] &&
+              data.branch.nodes[1].data.kontakty_list_title.raw[0].text ? (
+                <h4>
+                  {data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:
+                </h4>
+              ) : (
+                ""
+              )}
+            </div>
+            {data.branch.nodes[1] && data.branch.nodes[2].data.kontakty_list ? (
+              <>
+                {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
+                  return (
+                    <ol key={index}>
+                      <span className="branch-list-logo">
+                        <FaSquareFull />
+                      </span>
+                      {item.kontakty_item.raw[0].text}
+                    </ol>
+                  );
+                })}
+              </>
+            ) : (
+              ""
+            )}
+            <div className="branch-footer">
+              <h4>{data.branch.nodes[1].data.kontakt_napsah.raw[0].text}</h4>
+              <div>
+                {data.branch.nodes[1].data.kontakt_info.map((item, index) => {
+                  return <p>{item.kontakt_obsah.raw[0].text}</p>;
+                })}
+              </div>
+            </div>
+          </div>
 
-        {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt_adresa
-          .raw[0].text ? (
-          <p>
-            {
-              data.branch.nodes[1].data.kontakt_link.document[0].data
-                .kontakt_adresa.raw[0].text
-            }
-          </p>
-        ) : (
-          ""
-        )}
-
-        {data.branch.nodes[1] &&
-        data.branch.nodes[1].data.kontakt_link.document[0].data.kontakt_info
-          .raw[0].text ? (
-          <p>
-            {
-              data.branch.nodes[1].data.kontakt_link.document[0].data
-                .kontakt_info.raw[0].text
-            }
-          </p>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="branch-list-border"></div>
-      {children}
-    </section>
+          <div className="branch-body-img">
+            {data.branch.nodes[1] &&
+            data.branch.nodes[1].data.kontakty_list[0].kontakty_image ? (
+              <BackgroundImage
+                fluid={
+                  data.branch.nodes[1].data.kontakty_list[0].kontakty_image
+                    .localFile.childImageSharp.fluid
+                }
+                imgStyle={{ objectFit: "contain" }}
+                className="image"
+              >
+                <div className="image-banner">
+                  <h4>
+                    {data.branch.nodes[1].data.kontakt_napsah.raw[0].text}
+                  </h4>
+                  <div>
+                    {console.log(data.branch.nodes[1].data.kontakt_info)}
+                    {data.branch.nodes[1].data.kontakt_info.map(
+                      (item, index) => {
+                        return (
+                          <p key={index}>{item.kontakt_obsah.raw[0].text}</p>
+                        );
+                      }
+                    )}
+                  </div>
+                </div>
+              </BackgroundImage>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        {children}
+      </section>
+    </>
   );
 };
 
-export default styled(BranchBruno)`
+export default styled(BranchePraha)`
+  text-align: center;
   background-color: ${theme.colors.primary};
 
-  .branch-body-header {
-    margin-left: 200px;
-    padding-top: 30px;
-  }
+  /* .branch-body-header {
+    margin-top: 50px;
+  } */
 
   .branch-body-header h4 {
-    border-bottom: 1px solid white;
-    border-width: 2.5px;
-    padding-bottom: 4px;
     color: white;
-    padding-top: 30x;
-  }
-
-  .branch-body-header p {
-    width: 657px;
   }
 
   .branch-body-header p {
@@ -196,53 +179,134 @@ export default styled(BranchBruno)`
   }
 
   .branch-body-title {
-    margin-left: 200px;
+    margin-left: 0px;
+    text-align: left;
   }
-  .branch-body-title h4 {
+
+  .branch-body-list ol {
+    color: white;
+  }
+
+  .branch-body-list h4 {
     color: white;
   }
 
   .branch-body-list {
-    margin-right: 36px;
-    color: white;
+    text-align: left;
+    color: ${theme.colors.primary};
   }
 
-  .branch-body-list span {
-    padding-right: 4px;
-    color: white;
-    font-size: 12px;
+  .branch-body-img {
   }
 
-  .branch-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-left: 200px;
+  .image {
+    width: 100%;
+    height: 411px;
+    background-position: center;
+    background-size: cover;
+    opacity: 1 !important;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  }
+
+  .image-banner {
+    width: 336px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 39px;
+  }
+
+  .image-banner h4 {
     color: white;
+    border-bottom: 1px solid;
+    border-width: 3px;
+    padding-bottom: 10px;
+  }
+
+  .image-banner p {
+    color: white;
+    font-size: 24px !important;
+  }
+
+  .branch-list-logo {
+    padding-right: 5px;
+    font-size: 10px;
+  }
+
+  .branch-body-list {
+    margin-left: 18px;
+  }
+
+  .branch-list-logo {
+    font-size: 19px;
+  }
+
+  .branch-body-list ol {
+    margin-left: 0;
   }
 
   .branch-footer {
-    margin-left: 200px;
-    width: 300px;
+    display: none;
   }
 
-  .branch-footer h4 {
-    color: white;
-  }
   .branch-footer p {
     color: white;
   }
 
-  .branch-body-img {
-    max-height: 342px;
-    position: relative;
-    bottom: 39px;
-  }
+  @media (min-width: 993px) {
+    .branch-body-header {
+      margin-left: 200px;
+      text-align: left;
+    }
 
-  .branch-list-border {
-    border: 1px solid white;
-    width: 247px;
-    position: relative;
-    bottom: 268px;
-    left: 194px;
+    .branch-body-header h4 {
+      border-bottom: 1px solid;
+      padding-top: 50px;
+    }
+
+    .branch-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .image {
+      width: 100%;
+      height: 402px;
+      background-position: center;
+      background-size: cover;
+      /* opacity: 1 !important; */
+      /* background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); */
+      box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    }
+
+    .image-banner {
+      display: none;
+    }
+
+    .branch-body-list {
+      margin-left: 200px;
+    }
+
+    .branch-list-logo {
+      padding-right: 5px;
+      font-size: 10px;
+    }
+
+    .branch-body-list ol {
+      font-size: 18px;
+      margin-left: 0;
+    }
+
+    .branch-footer {
+      width: 276px;
+      display: block;
+    }
+
+    .branch-footer h4 {
+      border-top: 1px solid;
+      padding-top: 10px;
+      border-width: 4px;
+    }
   }
 `;

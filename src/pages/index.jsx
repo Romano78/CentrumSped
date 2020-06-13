@@ -30,7 +30,7 @@ const Index = ({
   return (
     <>
       <SEO pathname={location.pathname} locale={locale} />
-      <Header>
+      {/* <Header>
         <div className="nav-center">
           <div className="nav-header">
             {homepage.data.oddil[0] &&
@@ -51,7 +51,7 @@ const Index = ({
             <ScrollToLink></ScrollToLink>
           </div>
         </div>
-      </Header>
+      </Header> */}
       <StyledHero
         home="true"
         img={
