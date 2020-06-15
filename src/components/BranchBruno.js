@@ -78,7 +78,7 @@ const BranchePraha = ({ className, children }) => {
     speed: 500,
     cssEase: "linear",
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 993,
@@ -93,15 +93,15 @@ const BranchePraha = ({ className, children }) => {
       <div className="smooth-scrolling" id="Kontakty"></div>
       <section className={className}>
         <div className="branch-body-header">
-          {data.branch.nodes[2] &&
-          data.branch.nodes[2].data.kontakty_subtitle.raw[0].text ? (
-            <h4>{data.branch.nodes[2].data.kontakty_subtitle.raw[0].text}</h4>
+          {data.branch.nodes[1] &&
+          data.branch.nodes[1].data.kontakty_subtitle.raw[0].text ? (
+            <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
           ) : (
             ""
           )}
-          {data.branch.nodes[2] &&
-          data.branch.nodes[2].data.kontakty_obsah.raw[0].text ? (
-            <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
+          {data.branch.nodes[1] &&
+          data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
+            <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
           ) : (
             ""
           )}
@@ -109,18 +109,18 @@ const BranchePraha = ({ className, children }) => {
         <div className="branch-body">
           <div className="branch-body-list">
             <div className="branch-body-title">
-              {data.branch.nodes[2] &&
-              data.branch.nodes[2].data.kontakty_list_title.raw[0].text ? (
+              {data.branch.nodes[1] &&
+              data.branch.nodes[1].data.kontakty_list_title.raw[0].text ? (
                 <h4>
-                  {data.branch.nodes[2].data.kontakty_list_title.raw[0].text}:
+                  {data.branch.nodes[0].data.kontakty_list_title.raw[0].text}:
                 </h4>
               ) : (
                 ""
               )}
             </div>
-            {data.branch.nodes[2] && data.branch.nodes[2].data.kontakty_list ? (
+            {data.branch.nodes[1] && data.branch.nodes[2].data.kontakty_list ? (
               <>
-                {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
+                {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
                   return (
                     <ol key={index}>
                       <span className="branch-list-logo">
@@ -135,9 +135,9 @@ const BranchePraha = ({ className, children }) => {
               ""
             )}
             <div className="branch-footer">
-              <h4>{data.branch.nodes[2].data.kontakt_napsah.raw[0].text}</h4>
+              <h4>{data.branch.nodes[1].data.kontakt_napsah.raw[0].text}</h4>
               <div>
-                {data.branch.nodes[2].data.kontakt_info.map((item, index) => {
+                {data.branch.nodes[1].data.kontakt_info.map((item, index) => {
                   return <p>{item.kontakt_obsah.raw[0].text}</p>;
                 })}
               </div>
@@ -145,13 +145,10 @@ const BranchePraha = ({ className, children }) => {
           </div>
           <div className="branch-body-img">
             <Slider {...settings}>
-              {data.branch.nodes[2].data.kontakty_image_group.map(
+              {data.branch.nodes[1].data.kontakty_image_group.map(
                 (item, index) => {
                   return (
                     <>
-                      {console.log(
-                        item.kontakty_image.localFile.childImageSharp.fluid
-                      )}
                       <BackgroundImage
                         fluid={
                           item.kontakty_image.localFile.childImageSharp.fluid
@@ -173,11 +170,11 @@ const BranchePraha = ({ className, children }) => {
                             ""
                           )}
 
-                          {data.branch.nodes[0] &&
-                          data.branch.nodes[0].data.kontakt_info ? (
+                          {data.branch.nodes[1] &&
+                          data.branch.nodes[1].data.kontakt_info ? (
                             <>
                               <div>
-                                {data.branch.nodes[0].data.kontakt_info.map(
+                                {data.branch.nodes[1].data.kontakt_info.map(
                                   (item, index) => {
                                     return (
                                       <p>{item.kontakt_obsah.raw[0].text}</p>
@@ -208,6 +205,10 @@ export default styled(BranchePraha)`
   text-align: center;
 
   .slick-prev:before {
+    content: none;
+  }
+
+  .slick-next:before {
     content: none;
   }
 

@@ -93,6 +93,28 @@ const globalStyle = css`
     h6 {
       font-size: 0.563rem !important;
     }
+    @media (max-width: ${theme.breakpoints.l}) {
+    h1 {
+      font-size: 72px !important;
+    }
+    p {
+      font-size: 24px !important;
+    }
+    h2 {
+      font-size: 36px !important;
+    }
+    h3 {
+      font-size: 24px !important;
+    }
+    h4 {
+      font-size: 1rem !important;
+    }
+    h5 {
+      font-size: 0.75rem !important;
+    }
+    h6 {
+      font-size: 0.563rem !important;
+    }
   }
 `;
 

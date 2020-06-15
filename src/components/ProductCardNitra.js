@@ -158,7 +158,7 @@ export default styled(ProductCardNitra)`
     .card-nitra-text p {
       padding-left: 18px;
       margin-bottom: 0;
-      font-size: 14px;
+      font-size: 18px;
     }
 
     .card-nitra {

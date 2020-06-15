@@ -203,7 +203,8 @@ export default styled(ProductCardBruno)`
     .card-bruno-text p {
       padding-right: 18px;
       margin-bottom: 0;
-      font-size: 14px;
+      font-size: 18px;
+      width: 90%;
     }
 
     .card-bruno-description {
@@ -231,6 +232,7 @@ export default styled(ProductCardBruno)`
 
     .card-bruno-description p {
       text-align: left;
+      width: 80%;
     }
   }
 `;

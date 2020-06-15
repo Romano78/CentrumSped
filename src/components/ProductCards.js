@@ -121,13 +121,17 @@ export default styled(ProductCards)`
 
     height: 325px;
     background: rgba(255, 255, 255, 0.5);
-  }
+        border-bottom: 1px solid ${theme.colors.primary};
+            border-width: 6px;
 
+
+  }
+/* 
   .background-image:hover {
     border-width: 6px;
     border-bottom: 1px solid ${theme.colors.primary};
     border-width: 6px;
-  }
+  } */
 
   .background-image h2 {
     position: relative;
@@ -144,6 +148,14 @@ export default styled(ProductCards)`
     transition: all 0.4s linear;
     overflow: hidden;
   }
+
+  .show-info p {
+      border-bottom: 1px solid;
+    padding-bottom: 10px;
+    border-width: 3px;
+  }
+
+
 
   .card-info {
     list-style-type: none;

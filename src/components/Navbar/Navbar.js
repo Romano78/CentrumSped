@@ -47,8 +47,6 @@ const Navbar = ({ className }) => {
     onStateChange((isOpen) => false);
   };
 
-  console.log(MenuOpen);
-
   return (
     <>
       <div className={className}>

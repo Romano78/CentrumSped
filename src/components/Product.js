@@ -88,12 +88,6 @@ export default styled(Product)`
     text-align: center;
   }
 
-  .product p {
-    width: 100vw;
-    text-align: left;
-    font-size: 14px;
-  }
-
   .product span {
     display: none;
   }
@@ -135,7 +129,7 @@ export default styled(Product)`
       display: inline;
     }
     .product p {
-      max-width: 50vw;
+      max-width: 75%;
     }
 
     .product h2 {
