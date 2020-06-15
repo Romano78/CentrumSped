@@ -55,8 +55,8 @@ const globalStyle = css`
     &:hover,
     &:active {
       border-bottom: none;
-      background: linear-gradient(blue, blue) bottom /* left or right or else */
-        no-repeat;
+      background: linear-gradient(#133c8b, #133c8b) bottom
+        /* left or right or else */ no-repeat;
       background-size: 35% 3px;
       padding-bottom: 10px;
     }

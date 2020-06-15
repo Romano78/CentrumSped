@@ -3,13 +3,14 @@ import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import { slide as Menu } from "react-burger-menu";
 import LocalizedLink from "../LocalizedLink";
+import { useState } from "react";
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
   require("smooth-scroll")('a[href*="#"]');
 }
 
-const Navbar = ({ className, children }) => {
+const Navbar = ({ className }) => {
   const data = useStaticQuery(graphql`
     {
       navbar: allPrismicHeader(filter: { lang: { eq: "cs-cz" } }) {
@@ -34,12 +35,31 @@ const Navbar = ({ className, children }) => {
       }
     }
   `);
+  const [MenuOpen, onStateChange] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(true);
+
+  const isMenuOpen = () => {
+    onStateChange((MenuOpen) => !MenuOpen);
+  };
+
+  const closeNav = () => {
+    onStateChange((isOpen) => false);
+  };
+
+  console.log(MenuOpen);
+
   return (
     <>
       <div className={className}>
         <div className="navbar">
           <div className="navbar-mobile">
-            <Menu width={"100%"}>
+            <Menu
+              width={"100%"}
+              isOpen={false}
+              onClick={closeNav}
+              onStateChange={isMenuOpen}
+            >
               {data.navbar.nodes[0].data.links.map((item, index) => {
                 return (
                   <LocalizedLink
@@ -47,6 +67,7 @@ const Navbar = ({ className, children }) => {
                     to={`/#${item.produkty.raw[0].text}`}
                     aria-label={`${item.produkty.raw[0].text}`}
                     activeClassName="active"
+                    onClick={closeNav}
                   >
                     <span>{item.produkty.raw[0].text}</span>
                   </LocalizedLink>
@@ -55,35 +76,29 @@ const Navbar = ({ className, children }) => {
               <h1 className="language-switcher">CS/CZ</h1>
             </Menu>
           </div>
+        </div>
+        <div className="nav-bar-desktop-container">
           <div className="navbar-mobile-logo">
             <img
               src={data.navbar.nodes[0].data.logo.localFile.publicURL}
               alt=""
             />
-            {console.log(data.navbar.nodes[0].data.logo.localFile)}
           </div>
-        </div>
-        <div className="navbar-desktop">
-          <div className="navbar-desktop-logo">
-            <img
-              src={data.navbar.nodes[0].data.logo.localFile.publicURL}
-              alt=""
-            />
-            {console.log(data.navbar.nodes[0].data.logo.localFile)}
-          </div>
-          <div className="navbar-desktop-links">
-            {data.navbar.nodes[0].data.links.map((item, index) => {
-              return (
-                <LocalizedLink
-                  key={index}
-                  to={`/#${item.produkty.raw[0].text}`}
-                  aria-label={`${item.produkty.raw[0].text}`}
-                  activeClassName="active"
-                >
-                  {item.produkty.raw[0].text}
-                </LocalizedLink>
-              );
-            })}
+          <div className="navbar-desktop">
+            <div className="navbar-desktop-links">
+              {data.navbar.nodes[0].data.links.map((item, index) => {
+                return (
+                  <LocalizedLink
+                    key={index}
+                    to={`/#${item.produkty.raw[0].text}`}
+                    aria-label={`${item.produkty.raw[0].text}`}
+                    activeClassName="active"
+                  >
+                    {item.produkty.raw[0].text}
+                  </LocalizedLink>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -103,7 +118,7 @@ export default styled(Navbar)`
     padding-left: 24px;
   }
 
-  .navbar-mobile-logo img {
+  .navbar-mobile-logo {
     width: 50%;
   }
   .navbar-mobile {
@@ -193,8 +208,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
     .bm-item-list a {
       &:hover,
       &:active {
-        background: none;
         outline: none;
+        border-bottom: none;
+        background: linear-gradient(white, white) bottom left
+          /* left or right or else */ no-repeat;
+        background-size: 30% 3px;
       }
 
       &:focus {
@@ -220,6 +238,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 
   @media (min-width: 993px) {
+    width: 100%;
+    height: 153px;
+    .nav-bar-desktop-container {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 18px;
+    }
     .navbar-mobile {
       display: none;
     }
@@ -234,12 +259,15 @@ Note: Beware of modifying this element as it can break the animations - you shou
       padding-top: 50px;
     }
     .navbar-desktop-logo {
-      padding-left: 42px;
+      display: none;
     }
 
     .navbar-desktop-links {
-      padding-right: 49px;
-      padding-top: 3px;
+      width: 518px;
+    }
+
+    .navbar-mobile-logo {
+      width: 50%;
     }
   }
 `;
