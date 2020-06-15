@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import Img from "gatsby-image";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
@@ -79,8 +76,8 @@ const BranchePraha = ({ className, children }) => {
     infinite: true,
     speed: 500,
     fade: true,
-    autoplay: true,
-    autoplaySpeed: 200,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
     cssEase: "linear",
   };
   return (
@@ -241,7 +238,7 @@ export default styled(BranchePraha)`
   .branch-body-img {
     opacity: 0.9;
     height: 500px;
-    width: 400px;
+    width: 100vw;
   }
 
   .image {
@@ -298,6 +295,17 @@ export default styled(BranchePraha)`
   }
 
   @media (min-width: 993px) {
+    .slick-slider {
+      width: 688px;
+      height: 402.12px;
+    }
+
+    .branch-body-img {
+      opacity: 0.9;
+      width: 688px;
+      height: 402.12px;
+    }
+
     .branch-body-header {
       margin-left: 200px;
       text-align: left;

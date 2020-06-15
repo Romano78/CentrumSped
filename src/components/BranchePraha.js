@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
+import Slider from "react-slick";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
@@ -70,6 +71,15 @@ const BranchePraha = ({ className, children }) => {
       }
     }
   `);
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    fade: true,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
+    cssEase: "linear",
+  };
   return (
     <>
       <div className="smooth-scrolling" id="Kontakty"></div>
@@ -137,49 +147,58 @@ const BranchePraha = ({ className, children }) => {
             </div>
           </div>
           <div className="branch-body-img">
-            {console.log(
-              data.branch.nodes[2].data.kontakty_image_group[0].kontakty_image
-                .localFile.childImageSharp.fluid
-            )}
-            {data.branch.nodes[0] &&
-            data.branch.nodes[2].data.kontakty_image_group ? (
-              <BackgroundImage
-                fluid={
-                  data.branch.nodes[2].data.kontakty_image_group[0]
-                    .kontakty_image.localFile.childImageSharp.fluid
-                }
-                imgStyle={{ objectFit: "contain" }}
-                className="image"
-              >
-                <div className="image-banner">
-                  {data.branch.nodes[0] &&
-                  data.branch.nodes[0].data.kontakt_napsah.raw[0].text ? (
-                    <h4>
-                      {data.branch.nodes[0].data.kontakt_napsah.raw[0].text}
-                    </h4>
-                  ) : (
-                    ""
-                  )}
-
-                  {data.branch.nodes[0] &&
-                  data.branch.nodes[0].data.kontakt_info ? (
+            <Slider {...settings}>
+              {data.branch.nodes[2].data.kontakty_image_group.map(
+                (item, index) => {
+                  return (
                     <>
-                      <div>
-                        {data.branch.nodes[0].data.kontakt_info.map(
-                          (item, index) => {
-                            return <p>{item.kontakt_obsah.raw[0].text}</p>;
-                          }
-                        )}
-                      </div>
+                      {console.log(
+                        item.kontakty_image.localFile.childImageSharp.fluid
+                      )}
+                      <BackgroundImage
+                        fluid={
+                          item.kontakty_image.localFile.childImageSharp.fluid
+                        }
+                        imgStyle={{ objectFit: "contain" }}
+                        className="image"
+                      >
+                        <div className="image-banner">
+                          {data.branch.nodes[0] &&
+                          data.branch.nodes[0].data.kontakt_napsah.raw[0]
+                            .text ? (
+                            <h4>
+                              {
+                                data.branch.nodes[0].data.kontakt_napsah.raw[0]
+                                  .text
+                              }
+                            </h4>
+                          ) : (
+                            ""
+                          )}
+
+                          {data.branch.nodes[0] &&
+                          data.branch.nodes[0].data.kontakt_info ? (
+                            <>
+                              <div>
+                                {data.branch.nodes[0].data.kontakt_info.map(
+                                  (item, index) => {
+                                    return (
+                                      <p>{item.kontakt_obsah.raw[0].text}</p>
+                                    );
+                                  }
+                                )}
+                              </div>
+                            </>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      </BackgroundImage>
                     </>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </BackgroundImage>
-            ) : (
-              ""
-            )}
+                  );
+                }
+              )}
+            </Slider>
           </div>
         </div>
         {children}
@@ -271,6 +290,11 @@ export default styled(BranchePraha)`
     display: none;
   }
 
+  .branch-body-img {
+    opacity: 0.9;
+    width: 100vw;
+  }
+
   @media (min-width: 993px) {
     .branch-header {
       margin-left: 145px;
@@ -278,6 +302,11 @@ export default styled(BranchePraha)`
       padding-bottom: 45px;
       margin-top: 410px;
       text-align: left;
+    }
+    .branch-body-img {
+      opacity: 0.9;
+      width: 688px;
+      height: 402.12px;
     }
 
     .branch-header span {
