@@ -52,6 +52,8 @@ const BranchePraha = ({ className, children }) => {
                   text
                 }
               }
+            }
+            kontakty_image_group {
               kontakty_image {
                 localFile {
                   childImageSharp {
@@ -124,11 +126,11 @@ const BranchePraha = ({ className, children }) => {
           </div>
           <div className="branch-body-img">
             {data.branch.nodes[0] &&
-            data.branch.nodes[0].data.kontakty_list[0].kontakty_image ? (
+            data.branch.nodes[2].data.kontakty_image_group ? (
               <BackgroundImage
                 fluid={
-                  data.branch.nodes[0].data.kontakty_list[0].kontakty_image
-                    .localFile.childImageSharp.fluid
+                  data.branch.nodes[2].data.kontakty_image_group[0]
+                    .kontakty_image.localFile.childImageSharp.fluid
                 }
                 imgStyle={{ objectFit: "contain" }}
                 className="image"

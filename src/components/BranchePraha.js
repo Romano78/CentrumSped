@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
+import Img from "gatsby-image";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
@@ -52,6 +53,8 @@ const BranchePraha = ({ className, children }) => {
                   text
                 }
               }
+            }
+            kontakty_image_group {
               kontakty_image {
                 localFile {
                   childImageSharp {
@@ -134,31 +137,35 @@ const BranchePraha = ({ className, children }) => {
             </div>
           </div>
           <div className="branch-body-img">
-            {data.branch.nodes[2] &&
-            data.branch.nodes[2].data.kontakty_list[0].kontakty_image ? (
+            {console.log(
+              data.branch.nodes[2].data.kontakty_image_group[0].kontakty_image
+                .localFile.childImageSharp.fluid
+            )}
+            {data.branch.nodes[0] &&
+            data.branch.nodes[2].data.kontakty_image_group ? (
               <BackgroundImage
                 fluid={
-                  data.branch.nodes[2].data.kontakty_list[0].kontakty_image
-                    .localFile.childImageSharp.fluid
+                  data.branch.nodes[2].data.kontakty_image_group[0]
+                    .kontakty_image.localFile.childImageSharp.fluid
                 }
                 imgStyle={{ objectFit: "contain" }}
                 className="image"
               >
                 <div className="image-banner">
-                  {data.branch.nodes[2] &&
-                  data.branch.nodes[2].data.kontakt_napsah.raw[0].text ? (
+                  {data.branch.nodes[0] &&
+                  data.branch.nodes[0].data.kontakt_napsah.raw[0].text ? (
                     <h4>
-                      {data.branch.nodes[2].data.kontakt_napsah.raw[0].text}
+                      {data.branch.nodes[0].data.kontakt_napsah.raw[0].text}
                     </h4>
                   ) : (
                     ""
                   )}
 
-                  {data.branch.nodes[2] &&
-                  data.branch.nodes[2].data.kontakt_info ? (
+                  {data.branch.nodes[0] &&
+                  data.branch.nodes[0].data.kontakt_info ? (
                     <>
                       <div>
-                        {data.branch.nodes[2].data.kontakt_info.map(
+                        {data.branch.nodes[0].data.kontakt_info.map(
                           (item, index) => {
                             return <p>{item.kontakt_obsah.raw[0].text}</p>;
                           }
