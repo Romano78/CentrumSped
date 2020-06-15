@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
@@ -74,11 +75,19 @@ const BranchePraha = ({ className, children }) => {
 
   const settings = {
     infinite: true,
-    speed: 500,
     fade: true,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
+    speed: 500,
     cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 1500,
+    responsive: [
+      {
+        breakpoint: 993,
+        settings: {
+          autoplay: false,
+        },
+      },
+    ],
   };
   return (
     <>
@@ -176,11 +185,11 @@ const BranchePraha = ({ className, children }) => {
                             ""
                           )}
 
-                          {data.branch.nodes[0] &&
-                          data.branch.nodes[0].data.kontakt_info ? (
+                          {data.branch.nodes[2] &&
+                          data.branch.nodes[2].data.kontakt_info ? (
                             <>
                               <div>
-                                {data.branch.nodes[0].data.kontakt_info.map(
+                                {data.branch.nodes[2].data.kontakt_info.map(
                                   (item, index) => {
                                     return (
                                       <p>{item.kontakt_obsah.raw[0].text}</p>
@@ -209,6 +218,14 @@ const BranchePraha = ({ className, children }) => {
 
 export default styled(BranchePraha)`
   text-align: center;
+
+  .slick-next:before {
+    content: none;
+  }
+
+  .slick-prev:before {
+    content: none;
+  }
 
   .branch-header {
     text-transform: uppercase;
@@ -290,11 +307,6 @@ export default styled(BranchePraha)`
     display: none;
   }
 
-  .branch-body-img {
-    opacity: 0.9;
-    width: 100vw;
-  }
-
   @media (min-width: 993px) {
     .branch-header {
       margin-left: 145px;
@@ -334,8 +346,8 @@ export default styled(BranchePraha)`
     }
 
     .image {
-      width: 100%;
-      height: 402px;
+      /* width: 100%;
+      height: 402px; */
       background-position: center;
       background-size: cover;
       /* opacity: 1 !important; */

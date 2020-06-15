@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { theme } from "../styles";
@@ -74,11 +74,19 @@ const BranchePraha = ({ className, children }) => {
 
   const settings = {
     infinite: true,
-    speed: 500,
     fade: true,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
+    speed: 500,
     cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 1500,
+    responsive: [
+      {
+        breakpoint: 993,
+        settings: {
+          autoplay: false,
+        },
+      },
+    ],
   };
   return (
     <>
@@ -199,6 +207,10 @@ const BranchePraha = ({ className, children }) => {
 export default styled(BranchePraha)`
   text-align: center;
 
+  .slick-prev:before {
+    content: none;
+  }
+
   background-color: ${theme.colors.primary};
 
   /* .branch-body-header {
@@ -237,8 +249,6 @@ export default styled(BranchePraha)`
 
   .branch-body-img {
     opacity: 0.9;
-    height: 500px;
-    width: 100vw;
   }
 
   .image {
@@ -295,11 +305,6 @@ export default styled(BranchePraha)`
   }
 
   @media (min-width: 993px) {
-    .slick-slider {
-      width: 688px;
-      height: 402.12px;
-    }
-
     .branch-body-img {
       opacity: 0.9;
       width: 688px;
@@ -322,8 +327,8 @@ export default styled(BranchePraha)`
     }
 
     .image {
-      width: 100%;
-      height: 402px;
+      /* width: 100%;
+      height: 402px; */
       background-position: center;
       background-size: cover;
       /* opacity: 1 !important; */
@@ -363,18 +368,3 @@ export default styled(BranchePraha)`
     }
   }
 `;
-
-// {
-//   console.log(
-//     data.branch.nodes[2].data.kontakty_image_group.map((item, index) => {
-//       console.log(item.kontakty_image.localFile.childImageSharp.fluid);
-//     })
-//   );
-// }
-
-// {
-//   console.log(
-//     data.branch.nodes[2].data.kontakty_image_group[0].kontakty_image.localFile
-//       .childImageSharp.fluid
-//   );
-// }

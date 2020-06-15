@@ -71,28 +71,20 @@ const BranchePraha = ({ className, children }) => {
     }
   `);
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    fade: true,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
-    cssEase: "linear",
-  };
   return (
     <>
       <div className="smooth-scrolling" id="Kontakty"></div>
       <section className={className}>
         <div className="branch-body-header">
-          {data.branch.nodes[0] &&
-          data.branch.nodes[0].data.kontakty_subtitle.raw[0].text ? (
-            <h4>{data.branch.nodes[0].data.kontakty_subtitle.raw[0].text}</h4>
+          {data.branch.nodes[1] &&
+          data.branch.nodes[1].data.kontakty_subtitle.raw[0].text ? (
+            <h4>{data.branch.nodes[1].data.kontakty_subtitle.raw[0].text}</h4>
           ) : (
             ""
           )}
-          {data.branch.nodes[0] &&
-          data.branch.nodes[0].data.kontakty_obsah.raw[0].text ? (
-            <p>{data.branch.nodes[0].data.kontakty_obsah.raw[0].text}</p>
+          {data.branch.nodes[1] &&
+          data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
+            <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
           ) : (
             ""
           )}
@@ -100,18 +92,18 @@ const BranchePraha = ({ className, children }) => {
         <div className="branch-body">
           <div className="branch-body-list">
             <div className="branch-body-title">
-              {data.branch.nodes[0] &&
-              data.branch.nodes[0].data.kontakty_list_title.raw[0].text ? (
+              {data.branch.nodes[1] &&
+              data.branch.nodes[1].data.kontakty_list_title.raw[0].text ? (
                 <h4>
-                  {data.branch.nodes[0].data.kontakty_list_title.raw[0].text}:
+                  {data.branch.nodes[1].data.kontakty_list_title.raw[0].text}:
                 </h4>
               ) : (
                 ""
               )}
             </div>
-            {data.branch.nodes[0] && data.branch.nodes[0].data.kontakty_list ? (
+            {data.branch.nodes[1] && data.branch.nodes[0].data.kontakty_list ? (
               <>
-                {data.branch.nodes[0].data.kontakty_list.map((item, index) => {
+                {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
                   return (
                     <ol key={index}>
                       <span className="branch-list-logo">
@@ -126,67 +118,64 @@ const BranchePraha = ({ className, children }) => {
               ""
             )}
             <div className="branch-footer">
-              <h4>{data.branch.nodes[0].data.kontakt_napsah.raw[0].text}</h4>
+              <h4>{data.branch.nodes[1].data.kontakt_napsah.raw[0].text}</h4>
               <div>
-                {data.branch.nodes[0].data.kontakt_info.map((item, index) => {
+                {data.branch.nodes[1].data.kontakt_info.map((item, index) => {
                   return <p>{item.kontakt_obsah.raw[0].text}</p>;
                 })}
               </div>
             </div>
           </div>
           <div className="branch-body-img">
-            <Slider {...settings}>
-              {data.branch.nodes[2].data.kontakty_image_group.map(
-                (item, index) => {
-                  return (
-                    <>
-                      {console.log(
+            {data.branch.nodes[1].data.kontakty_image_group.map(
+              (item, index) => {
+                return (
+                  <>
+                    {console.log(
+                      item.kontakty_image.localFile.childImageSharp.fluid
+                    )}
+                    <BackgroundImage
+                      fluid={
                         item.kontakty_image.localFile.childImageSharp.fluid
-                      )}
-                      <BackgroundImage
-                        fluid={
-                          item.kontakty_image.localFile.childImageSharp.fluid
-                        }
-                        imgStyle={{ objectFit: "contain" }}
-                        className="image"
-                      >
-                        <div className="image-banner">
-                          {data.branch.nodes[0] &&
-                          data.branch.nodes[0].data.kontakt_napsah.raw[0]
-                            .text ? (
-                            <h4>
-                              {
-                                data.branch.nodes[0].data.kontakt_napsah.raw[0]
-                                  .text
-                              }
-                            </h4>
-                          ) : (
-                            ""
-                          )}
+                      }
+                      imgStyle={{ objectFit: "contain" }}
+                      className="image"
+                    >
+                      <div className="image-banner">
+                        {data.branch.nodes[1] &&
+                        data.branch.nodes[1].data.kontakt_napsah.raw[0].text ? (
+                          <h4>
+                            {
+                              data.branch.nodes[1].data.kontakt_napsah.raw[0]
+                                .text
+                            }
+                          </h4>
+                        ) : (
+                          ""
+                        )}
 
-                          {data.branch.nodes[0] &&
-                          data.branch.nodes[0].data.kontakt_info ? (
-                            <>
-                              <div>
-                                {data.branch.nodes[0].data.kontakt_info.map(
-                                  (item, index) => {
-                                    return (
-                                      <p>{item.kontakt_obsah.raw[0].text}</p>
-                                    );
-                                  }
-                                )}
-                              </div>
-                            </>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      </BackgroundImage>
-                    </>
-                  );
-                }
-              )}
-            </Slider>
+                        {data.branch.nodes[1] &&
+                        data.branch.nodes[1].data.kontakt_info ? (
+                          <>
+                            <div>
+                              {data.branch.nodes[1].data.kontakt_info.map(
+                                (item, index) => {
+                                  return (
+                                    <p>{item.kontakt_obsah.raw[0].text}</p>
+                                  );
+                                }
+                              )}
+                            </div>
+                          </>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    </BackgroundImage>
+                  </>
+                );
+              }
+            )}
           </div>
         </div>
         {children}
