@@ -20,6 +20,7 @@ import "typeface-source-sans-pro";
 
 const globalStyle = css`
   ${reset}
+
   h1, h2, h3, h4, h5, h6, p {
     color: ${theme.colors.primary};
   }
@@ -31,6 +32,10 @@ const globalStyle = css`
   body {
     color: ${theme.colors.greyDarker};
     background-color: ${theme.colors.bg};
+  }
+
+  button:focus {
+    outline: none;
   }
 
   ::selection {
@@ -45,6 +50,20 @@ const globalStyle = css`
     font-style: normal;
     font-family: "proxima-nova";
     text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover,
+    &:active {
+      border-bottom: none;
+      background: linear-gradient(blue, blue) bottom /* left or right or else */
+        no-repeat;
+      background-size: 35% 3px;
+      padding-bottom: 10px;
+    }
+    &:focus {
+      text-decoration: none;
+      border: none;
+    }
   }
 
   @media (max-width: ${theme.breakpoints.s}) {
@@ -85,6 +104,14 @@ const LocaleSwitcher = styled.div`
 
   a {
     padding: 2px;
+  }
+
+  a:hover {
+    background: none;
+  }
+
+  @media (max-width: 992px) {
+    display: none;
   }
 `;
 

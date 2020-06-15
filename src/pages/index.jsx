@@ -7,6 +7,7 @@ import { Wrapper, Title } from "../components";
 // import { LocaleContext } from "../components/Layout";
 import SEO from "../components/SEO";
 import Header from "../components/Header";
+import Navbar from "../components/Navbar/Navbar";
 import Banner from "../components/Banner";
 import StyledHero from "../components/StyledHero";
 import Product from "../components/Product";
@@ -19,8 +20,6 @@ import BranchBruno from "../components/BranchBruno";
 import Footer from "../components/Footer";
 import BranchNitra from "../components/BranchNitra";
 import Parteneri from "../components/Parteneri";
-import { Link } from "gatsby";
-import ScrollToLink from "../components/Links";
 
 const Index = ({
   data: { homepage, social },
@@ -30,28 +29,7 @@ const Index = ({
   return (
     <>
       <SEO pathname={location.pathname} locale={locale} />
-      {/* <Header>
-        <div className="nav-center">
-          <div className="nav-header">
-            {homepage.data.oddil[0] &&
-            homepage.data.oddil[0].sekce_polozka.document[0].data.logo.localFile
-              .publicURL ? (
-              <img
-                style={{ width: "550px" }}
-                src={
-                  homepage.data.oddil[0].sekce_polozka.document[0].data.logo
-                    .localFile.publicURL
-                }
-              />
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="nav-link">
-            <ScrollToLink></ScrollToLink>
-          </div>
-        </div>
-      </Header> */}
+      <Navbar></Navbar>
       <StyledHero
         home="true"
         img={

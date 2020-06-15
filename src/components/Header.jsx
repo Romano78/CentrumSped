@@ -7,29 +7,12 @@ import { theme } from "../styles";
 
 const StyledHeader = styled.nav`
   padding-bottom: 30px;
-  a {
+  /* a {
     color: ${theme.colors.primary};
     font-weight: 300;
     padding-right: 10px;
     font-style: normal;
     font-family: "proxima-nova";
-  }
-
-  /* .nav-header {
-    max-width: 1170px;
-    height: 110px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.25rem;
-    padding-top: 46px;
-  }
-
-  .nav-center {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   } */
 `;
 
