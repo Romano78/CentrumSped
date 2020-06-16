@@ -64,14 +64,18 @@ const ProductCardNitra = ({ className, children }) => {
                 objectFit="cover"
               />
             </div>
-            <div className="card-nitra-text">
+            <div className="card-nitra-text-body">
               {data.singleProduct.nodes[0] &&
               data.singleProduct.nodes[0].data.oddil[4].sekce_polozka
                 .document[0].data.footer_image_text.raw ? (
                 <>
                   {data.singleProduct.nodes[0].data.oddil[4].sekce_polozka.document[0].data.footer_image_text.raw.map(
                     (item, index) => {
-                      return <p key={index}>{item.text}</p>;
+                      return (
+                        <div className="card-nitra-text">
+                          <p key={index}>{item.text}</p>
+                        </div>
+                      );
                     }
                   )}
                 </>
@@ -82,12 +86,12 @@ const ProductCardNitra = ({ className, children }) => {
           </div>
           <div className="card-nitra-body">
             <div className="card-nitra-title">
-              <h3>
+              <h2>
                 {
                   data.singleProduct.nodes[0].data.oddil[4].sekce_polozka
                     .document[0].data.nadpis.raw[0].text
                 }
-              </h3>
+              </h2>
             </div>
             <div className="card-nitra-description">
               <p>
@@ -137,13 +141,36 @@ export default styled(ProductCardNitra)`
     margin-top: 50px;
   }
 
-  @media (min-width: 993px) {
+  .card-nitra-description {
+    padding: 10px;
+  }
+
+  .card-nitra-text-mobile {
+    padding-bottom: 20px;
+  }
+  .card-nitra-text-mobile p {
+    margin: 10px;
+  }
+
+  @media (min-width: 1025px) {
+    .card-nitra {
+      display: flex;
+      margin-top: 100px;
+      padding: 32px;
+      margin-left: 75px;
+      /* max-width: 1131px; */
+    }
+    .gatsby-image-wrapper {
+      width: 400px;
+      height: 300.25px;
+    }
     .card-nitra-image {
       display: inline !important;
     }
 
     .card-nitra-title {
       margin-top: 0px;
+      width: 80%;
     }
 
     .card-nitra-text-mobile {
@@ -161,16 +188,9 @@ export default styled(ProductCardNitra)`
       font-size: 18px;
     }
 
-    .card-nitra {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      margin-top: 100px;
-      padding: 32px;
-      /* max-width: 1131px; */
-    }
-
     .card-nitra-body {
       padding-top: 10px;
+      padding-left: 26px;
     }
     .card-nitra-image p {
       padding-left: 15px;
@@ -181,10 +201,12 @@ export default styled(ProductCardNitra)`
       text-align: left;
     }
 
-    .card-nitra-body p {
+    .card-nitra-description p {
       text-align: left;
       /* margin-right: 154px; */
       word-break: break-all;
+      font-size: 24px;
+      width: 80%;
     }
   }
 `;

@@ -60,12 +60,12 @@ const ProductCardBruno = ({ className, children }) => {
                 {data.singleProduct.nodes[0] &&
                 data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
                   .document[0].data.nadpis.raw[0].text ? (
-                  <h3>
+                  <h2>
                     {
                       data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
                         .document[0].data.nadpis.raw[0].text
                     }
-                  </h3>
+                  </h2>
                 ) : (
                   ""
                 )}
@@ -107,12 +107,12 @@ const ProductCardBruno = ({ className, children }) => {
                 {data.singleProduct.nodes[0] &&
                 data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
                   .document[0].data.nadpis.raw[0].text ? (
-                  <h3>
+                  <h2>
                     {
                       data.singleProduct.nodes[0].data.oddil[2].sekce_polozka
                         .document[0].data.nadpis.raw[0].text
                     }
-                  </h3>
+                  </h2>
                 ) : (
                   ""
                 )}
@@ -178,9 +178,14 @@ export default styled(ProductCardBruno)`
       0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 1025px) {
     .card-bruno-image {
       display: inline !important;
+    }
+
+    .gatsby-image-wrapper {
+      width: 438px;
+      height: 313px;
     }
 
     .hide-in-desktop-view {
@@ -204,35 +209,30 @@ export default styled(ProductCardBruno)`
       padding-right: 18px;
       margin-bottom: 0;
       font-size: 18px;
-      width: 90%;
     }
 
     .card-bruno-description {
       word-break: break-all;
+      font-size: 24px;
     }
 
     .card-bruno {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      padding: 32px;
-      /* max-width: 1131px; */
+      max-width: 82%;
+      margin-right: 10%;
+      display: flex;
+      margin-bottom: 50px;
     }
 
     .card-bruno-body {
       padding-top: 10px;
       padding-right: 31px;
     }
-    .card-bruno-image p {
-      font-size: 14px;
-    }
-
     .card-bruno-title {
       text-align: left;
     }
 
     .card-bruno-description p {
       text-align: left;
-      width: 80%;
     }
   }
 `;

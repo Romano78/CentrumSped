@@ -94,7 +94,7 @@ export default styled(Parteneri)`
     margin-top: 50px;
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 1025px) {
     .parteneri-header {
       margin-left: 145px;
       margin-top: 60px;

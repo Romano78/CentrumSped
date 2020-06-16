@@ -77,8 +77,8 @@ const BranchePraha = ({ className, children }) => {
     fade: true,
     speed: 500,
     cssEase: "linear",
-    autoplay: true,
-    autoplaySpeed: 2000,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 993,
@@ -90,7 +90,6 @@ const BranchePraha = ({ className, children }) => {
   };
   return (
     <>
-      <div className="smooth-scrolling" id="Kontakty"></div>
       <section className={className}>
         <div className="branch-body-header">
           {data.branch.nodes[1] &&
@@ -99,12 +98,14 @@ const BranchePraha = ({ className, children }) => {
           ) : (
             ""
           )}
-          {data.branch.nodes[1] &&
-          data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
-            <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
-          ) : (
-            ""
-          )}
+          <div className="branch-body-subtitle">
+            {data.branch.nodes[1] &&
+            data.branch.nodes[1].data.kontakty_obsah.raw[0].text ? (
+              <p>{data.branch.nodes[1].data.kontakty_obsah.raw[0].text}</p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
         <div className="branch-body">
           <div className="branch-body-list">
@@ -118,22 +119,27 @@ const BranchePraha = ({ className, children }) => {
                 ""
               )}
             </div>
-            {data.branch.nodes[1] && data.branch.nodes[2].data.kontakty_list ? (
-              <>
-                {data.branch.nodes[1].data.kontakty_list.map((item, index) => {
-                  return (
-                    <ol key={index}>
-                      <span className="branch-list-logo">
-                        <FaSquareFull />
-                      </span>
-                      {item.kontakty_item.raw[0].text}
-                    </ol>
-                  );
-                })}
-              </>
-            ) : (
-              ""
-            )}
+            <div className="branch-list-items">
+              {data.branch.nodes[1] &&
+              data.branch.nodes[2].data.kontakty_list ? (
+                <>
+                  {data.branch.nodes[1].data.kontakty_list.map(
+                    (item, index) => {
+                      return (
+                        <ol key={index}>
+                          <span className="branch-list-logo">
+                            <FaSquareFull />
+                          </span>
+                          {item.kontakty_item.raw[0].text}
+                        </ol>
+                      );
+                    }
+                  )}
+                </>
+              ) : (
+                ""
+              )}
+            </div>
             <div className="branch-footer">
               <h4>{data.branch.nodes[1].data.kontakt_napsah.raw[0].text}</h4>
               <div>
@@ -305,11 +311,9 @@ export default styled(BranchePraha)`
     color: white;
   }
 
-  @media (min-width: 993px) {
-    .branch-body-img {
-      opacity: 0.9;
-      width: 688px;
-      height: 402.12px;
+  @media (min-width: 1025px) {
+    .branch-body-subtitle {
+      width: 95%;
     }
 
     .branch-body-header {
@@ -327,16 +331,23 @@ export default styled(BranchePraha)`
       grid-template-columns: 1fr 1fr;
     }
 
+    .branch-body-img {
+      opacity: 0.9;
+      width: 45vw;
+      height: 402.12px;
+    }
+
     .image {
-      /* width: 100%;
-      height: 402px; */
       background-position: center;
       background-size: cover;
       /* opacity: 1 !important; */
-      /* background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); */
       box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
         0px 4px 4px rgba(0, 0, 0, 0.25);
       background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+
+    .branch-list-items {
+      width: 95%;
     }
 
     .image-banner {

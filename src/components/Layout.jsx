@@ -55,7 +55,7 @@ const globalStyle = css`
     &:hover,
     &:active {
       border-bottom: none;
-      background: linear-gradient(#133c8b, #133c8b) bottom
+      background: linear-gradient(#133c8b, #133c8b) bottom center
         /* left or right or else */ no-repeat;
       background-size: 35% 3px;
       padding-bottom: 10px;
@@ -66,7 +66,7 @@ const globalStyle = css`
     }
   }
 
-  @media (max-width: ${theme.breakpoints.s}) {
+  @media (min-width: ${theme.breakpoints.s}) {
     html {
       font-size: 24px !important;
     }
@@ -76,6 +76,9 @@ const globalStyle = css`
       font-size: 36px !important;
     }
     p {
+      font-size: 14px !important;
+    }
+    ol {
       font-size: 14px !important;
     }
     h2 {
@@ -93,21 +96,26 @@ const globalStyle = css`
     h6 {
       font-size: 0.563rem !important;
     }
-    @media (max-width: ${theme.breakpoints.l}) {
+  }
+
+  @media (min-width: ${theme.breakpoints.l}) {
     h1 {
       font-size: 72px !important;
-    }
-    p {
-      font-size: 24px !important;
     }
     h2 {
       font-size: 36px !important;
     }
     h3 {
+      font-size: 10px !important;
+    }
+    p {
       font-size: 24px !important;
     }
+    ol {
+      font-size: 18px !important;
+    }
     h4 {
-      font-size: 1rem !important;
+      font-size: 24px !important;
     }
     h5 {
       font-size: 0.75rem !important;
@@ -132,7 +140,7 @@ const LocaleSwitcher = styled.div`
     background: none;
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: 1025px) {
     display: none;
   }
 `;

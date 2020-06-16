@@ -100,6 +100,9 @@ const ProductCards = ({ className, children }) => {
 };
 
 export default styled(ProductCards)`
+  .smooth-scrolling {
+    display: none;
+  }
   .card {
     text-align: center;
     margin-top: 100px;
@@ -121,17 +124,10 @@ export default styled(ProductCards)`
 
     height: 325px;
     background: rgba(255, 255, 255, 0.5);
-        border-bottom: 1px solid ${theme.colors.primary};
-            border-width: 6px;
-
-
-  }
-/* 
-  .background-image:hover {
-    border-width: 6px;
     border-bottom: 1px solid ${theme.colors.primary};
     border-width: 6px;
-  } */
+    height: 92px;
+  }
 
   .background-image h2 {
     position: relative;
@@ -140,7 +136,7 @@ export default styled(ProductCards)`
   }
 
   .show-info {
-    height: 100px;
+    height: 300px;
     width: 100%;
     padding-left: 9px;
     text-align: left;
@@ -150,12 +146,10 @@ export default styled(ProductCards)`
   }
 
   .show-info p {
-      border-bottom: 1px solid;
-    padding-bottom: 10px;
+    border-bottom: 1px solid;
+    padding-bottom: 32px;
     border-width: 3px;
   }
-
-
 
   .card-info {
     list-style-type: none;
@@ -165,7 +159,13 @@ export default styled(ProductCards)`
     padding-left: 9px;
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 510px) {
+    .background-image {
+      height: 300px;
+    }
+  }
+
+  @media (min-width: 1025px) {
     .card {
       padding: 20px;
     }
@@ -183,13 +183,23 @@ export default styled(ProductCards)`
     }
 
     .show-info {
-      height: 300px;
+      height: 340px;
       width: 100%;
       padding-left: 9px;
       text-align: left;
       max-width: 500px;
       transition: all 0.4s linear;
       overflow: hidden;
+    }
+
+    .background-image {
+      opacity: 1 !important;
+
+      height: 325px;
+      background: rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid ${theme.colors.primary};
+      border-width: 6px;
+      height: 325px;
     }
 
     .card-info {

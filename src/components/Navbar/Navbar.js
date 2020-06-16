@@ -235,7 +235,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 1025px) {
     width: 100%;
     height: 153px;
     .nav-bar-desktop-container {
@@ -265,7 +265,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
 
     .navbar-mobile-logo {
-      width: 50%;
+      width: 45%;
     }
   }
 `;

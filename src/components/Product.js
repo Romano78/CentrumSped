@@ -110,17 +110,20 @@ export default styled(Product)`
   .product-image {
     box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
       0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+    width: 100%;
   }
 
-  @media (min-width: 992px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 50px;
+  .product p {
+    padding: 10px;
+  }
 
+  @media (min-width: 1025px) {
+    padding-top: 50px;
+    min-height: 400px;
     .product {
       margin-left: 145px;
       text-align: left;
-      max-width: 1395px;
     }
 
     .product span {
@@ -129,29 +132,71 @@ export default styled(Product)`
       display: inline;
     }
     .product p {
-      max-width: 75%;
+      max-width: 38%;
+      font-size: 24px;
+      word-break: break-all;
     }
 
     .product h2 {
       border-bottom: 1px solid;
+      border-width: 3px;
     }
 
     .product-image {
       box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
         0px 4px 4px rgba(0, 0, 0, 0.25);
+      width: 50%;
+      left: 47%;
+      position: absolute;
     }
   }
 
-  .title-logo {
-    padding-top: 5px;
+  @media (min-width: 1440px) {
+    padding-top: 50px;
+    min-height: 500px;
+    .product {
+      margin-left: 145px;
+      text-align: left;
+    }
+
+    .product span {
+      position: absolute;
+      left: 24px;
+      display: inline;
+    }
+    .product p {
+      max-width: 30%;
+      font-size: 24px;
+      word-break: break-all;
+    }
+
+    .product h2 {
+      border-bottom: 1px solid;
+      border-width: 3px;
+    }
+
+    .product-image {
+      box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+      width: 50%;
+      left: 40%;
+      position: absolute;
+    }
   }
 
   .gatsby-image-wrapper {
     vertical-align: middle;
   }
 
-  .product-image {
-    box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
-      0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media (min-width: 1680px) {
+    height: 550px;
+  }
+
+  @media (min-width: 1920px) {
+    height: 600px;
+  }
+
+  @media (min-width: 2500px) {
+    height: 800px;
   }
 `;

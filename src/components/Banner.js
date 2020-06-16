@@ -32,7 +32,7 @@ export default styled(Banner)`
     margin-top: -12px;
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 1025px) {
     width: 814px;
     position: absolute;
     bottom: 40px;

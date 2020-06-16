@@ -78,13 +78,12 @@ const BranchePraha = ({ className, children }) => {
     speed: 500,
     fade: true,
     // autoplay: true,
-    // autoplaySpeed: 2000,
+    // autoplaySpeed: 1000,
     cssEase: "linear",
   };
   return (
     <>
-      <div className="smooth-scrolling" id="Kontakty"></div>
-      <section className={className}>
+      <section className={className} id="Kontakty">
         <div className="branch-header">
           <span className="title-logo">
             <img src={logo} alt="title-logo" />
@@ -103,13 +102,16 @@ const BranchePraha = ({ className, children }) => {
           ) : (
             ""
           )}
-          {data.branch.nodes[2] &&
-          data.branch.nodes[2].data.kontakty_obsah.raw[0].text ? (
-            <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
-          ) : (
-            ""
-          )}
+          <div className="branch-body-subtitle">
+            {data.branch.nodes[2] &&
+            data.branch.nodes[2].data.kontakty_obsah.raw[0].text ? (
+              <p>{data.branch.nodes[2].data.kontakty_obsah.raw[0].text}</p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
+        <div className="branch-body-container"></div>
         <div className="branch-body">
           <div className="branch-body-list">
             <div className="branch-body-title">
@@ -122,22 +124,27 @@ const BranchePraha = ({ className, children }) => {
                 ""
               )}
             </div>
-            {data.branch.nodes[2] && data.branch.nodes[2].data.kontakty_list ? (
-              <>
-                {data.branch.nodes[2].data.kontakty_list.map((item, index) => {
-                  return (
-                    <ol key={index}>
-                      <span className="branch-list-logo">
-                        <FaSquareFull />
-                      </span>
-                      {item.kontakty_item.raw[0].text}
-                    </ol>
-                  );
-                })}
-              </>
-            ) : (
-              ""
-            )}
+            <div className="branch-list-items">
+              {data.branch.nodes[2] &&
+              data.branch.nodes[2].data.kontakty_list ? (
+                <>
+                  {data.branch.nodes[2].data.kontakty_list.map(
+                    (item, index) => {
+                      return (
+                        <ol key={index}>
+                          <span className="branch-list-logo">
+                            <FaSquareFull />
+                          </span>
+                          {item.kontakty_item.raw[0].text}
+                        </ol>
+                      );
+                    }
+                  )}
+                </>
+              ) : (
+                ""
+              )}
+            </div>
             <div className="branch-footer">
               <h4>{data.branch.nodes[2].data.kontakt_napsah.raw[0].text}</h4>
               <div>
@@ -293,7 +300,7 @@ export default styled(BranchePraha)`
     width: 100vw;
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 1025px) {
     .branch-header {
       margin-left: 145px;
       text-transform: uppercase;
@@ -301,10 +308,9 @@ export default styled(BranchePraha)`
       margin-top: 410px;
       text-align: left;
     }
-    .branch-body-img {
-      opacity: 0.9;
-      width: 688px;
-      height: 402.12px;
+
+    .branch-body-subtitle {
+      width: 95%;
     }
 
     .branch-header span {
@@ -331,15 +337,23 @@ export default styled(BranchePraha)`
       grid-template-columns: 1fr 1fr;
     }
 
+    .branch-body-img {
+      opacity: 0.9;
+      width: 45vw;
+      height: 402.12px;
+    }
+
     .image {
-      width: 100%;
-      height: 402px;
       background-position: center;
       background-size: cover;
       /* opacity: 1 !important; */
       box-shadow: 0px 9px 19px rgba(0, 0, 0, 0.18),
         0px 4px 4px rgba(0, 0, 0, 0.25);
       background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+
+    .branch-list-items {
+      width: 95%;
     }
 
     .image-banner {

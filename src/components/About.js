@@ -135,7 +135,7 @@ export default styled(About)`
     display: none;
   }
 
-  @media (min-width: 993px) {
+  @media (min-width: 1025px) {
     .about {
       width: 100%;
       height: 874px;
